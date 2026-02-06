@@ -99,6 +99,10 @@ class UserProfile(models.Model):
     daily_carbs = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     daily_fats = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     
+    # Clustering information
+    cluster_id = models.IntegerField(null=True, blank=True, help_text="K-Means cluster assignment")
+    cluster_name = models.CharField(max_length=50, blank=True, help_text="Cluster label")
+
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -194,8 +198,8 @@ class UserProfile(models.Model):
             'fats': round(fats_grams, 2),
         }
     
-    def save(self, *args, **kwargs):
-        """Override save to auto-calculate BMI, BMR, TDEE, and macros"""
+def save(self, *args, **kwargs):
+        """Override save to auto-calculate BMI, BMR, TDEE, macros, and assign cluster"""
         # Calculate BMI
         self.bmi = self.calculate_bmi()
         self.bmi_category = self.get_bmi_category()
@@ -209,4 +213,19 @@ class UserProfile(models.Model):
         self.daily_carbs = macros['carbs']
         self.daily_fats = macros['fats']
         
+        # Assign cluster (after saving first time)
         super().save(*args, **kwargs)
+        
+        # Update cluster assignment
+        try:
+            from recommendations.clustering import UserClustering
+            clustering = UserClustering()
+            cluster_id, cluster_name = clustering.predict_cluster(self)
+            
+            # Update without triggering save again
+            UserProfile.objects.filter(id=self.id).update(
+                cluster_id=cluster_id,
+                cluster_name=cluster_name
+            )
+        except Exception as e:
+            print(f"Cluster assignment failed: {e}")
