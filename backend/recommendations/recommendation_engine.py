@@ -86,17 +86,18 @@ class MealRecommendationEngine:
         
         return food_scores
     
-    def select_meal(self, meal_type, target_calories, exclude_foods=None):
+    def select_meal(self, meal_type, target_calories, exclude_foods=None, max_items=4):
         """
-        Select best food for a specific meal type
+        Select multiple foods for a specific meal type to reach target calories
         
         Args:
             meal_type: 'Breakfast', 'Lunch', 'Dinner'
             target_calories: Target calories for this meal
             exclude_foods: List of food IDs to exclude (avoid repetition)
+            max_items: Maximum number of food items per meal
         
         Returns:
-            Food object or None
+            List of Food objects
         """
         if exclude_foods is None:
             exclude_foods = []
@@ -111,36 +112,57 @@ class MealRecommendationEngine:
         foods = foods.exclude(id__in=exclude_foods)
         
         if not foods.exists():
-            return None
+            return []
         
         # Calculate similarity scores
         food_scores = self.calculate_similarity_scores(foods)
         
         if not food_scores:
-            return None
+            return []
         
-        # Select food closest to target calories
-        best_food = None
-        min_calorie_diff = float('inf')
+        # Select multiple foods to reach target calories
+        selected_foods = []
+        total_calories = 0
         
-        for food, score in food_scores[:10]:  # Top 10 similar foods
-            calorie_diff = abs(float(food.calories) - target_calories)
+        # First pass: Try to get close to target
+        for food, score in food_scores:
+            if len(selected_foods) >= max_items:
+                break
             
-            if calorie_diff < min_calorie_diff:
-                min_calorie_diff = calorie_diff
-                best_food = food
+            # Check if adding this food helps reach target
+            new_total = total_calories + float(food.calories)
+            
+            # Allow up to 30% over target for better accuracy
+            if new_total <= target_calories * 1.3:
+                selected_foods.append(food)
+                total_calories = new_total
+                exclude_foods.append(food.id)
+                
+                # Stop if we're within 5% of target
+                if abs(total_calories - target_calories) / target_calories <= 0.05:
+                    break
         
-        return best_food
+        # Second pass: If we're still too low, add more foods
+        if total_calories < target_calories * 0.85 and len(selected_foods) < max_items:
+            remaining_foods = [f for f, s in food_scores if f.id not in exclude_foods]
+            
+            for food in remaining_foods[:max_items - len(selected_foods)]:
+                new_total = total_calories + float(food.calories)
+                if new_total <= target_calories * 1.3:
+                    selected_foods.append(food)
+                    total_calories = new_total
+        
+        return selected_foods
     
     def generate_meal_plan(self):
         """
-        Generate complete daily meal plan (breakfast, lunch, dinner)
+        Generate complete daily meal plan with multiple foods per meal
         
         Returns:
             {
-                'breakfast': Food object,
-                'lunch': Food object,
-                'dinner': Food object,
+                'breakfast': [Food objects],
+                'lunch': [Food objects],
+                'dinner': [Food objects],
                 'total_calories': float,
                 'total_protein': float,
                 'total_carbs': float,
@@ -155,34 +177,33 @@ class MealRecommendationEngine:
         lunch_calories = total_calories * 0.40
         dinner_calories = total_calories * 0.35
         
-        selected_foods = []
+        selected_food_ids = []
         
-        # Select breakfast
-        breakfast = self.select_meal('Breakfast', breakfast_calories, selected_foods)
-        if breakfast:
-            selected_foods.append(breakfast.id)
+        # Select breakfast (1-4 items)
+        breakfast = self.select_meal('Breakfast', breakfast_calories, selected_food_ids, max_items=4)
+        selected_food_ids.extend([f.id for f in breakfast])
         
-        # Select lunch
-        lunch = self.select_meal('Lunch', lunch_calories, selected_foods)
-        if lunch:
-            selected_foods.append(lunch.id)
+        # Select lunch (2-4 items)
+        lunch = self.select_meal('Lunch', lunch_calories, selected_food_ids, max_items=4)
+        selected_food_ids.extend([f.id for f in lunch])
         
-        # Select dinner
-        dinner = self.select_meal('Dinner', dinner_calories, selected_foods)
+        # Select dinner (2-4 items)
+        dinner = self.select_meal('Dinner', dinner_calories, selected_food_ids, max_items=4)
         
         # Calculate totals
-        meals = [m for m in [breakfast, lunch, dinner] if m]
+        all_meals = breakfast + lunch + dinner
         
-        if not meals:
+        if not all_meals:
             return None
         
-        total_cal = sum(float(m.calories) for m in meals)
-        total_protein = sum(float(m.protein) for m in meals)
-        total_carbs = sum(float(m.carbohydrates) for m in meals)
-        total_fats = sum(float(m.fat) for m in meals)
+        total_cal = sum(float(m.calories) for m in all_meals)
+        total_protein = sum(float(m.protein) for m in all_meals)
+        total_carbs = sum(float(m.carbohydrates) for m in all_meals)
+        total_fats = sum(float(m.fat) for m in all_meals)
         
         # Calculate accuracy (how close to target)
         accuracy = (1 - abs(total_cal - total_calories) / total_calories) * 100
+        accuracy = min(accuracy, 100)  # Cap at 100%
         
         return {
             'breakfast': breakfast,

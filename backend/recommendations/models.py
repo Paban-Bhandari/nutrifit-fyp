@@ -7,10 +7,10 @@ class MealPlan(models.Model):
     
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='meal_plans')
     
-    # Meals
-    breakfast = models.ForeignKey(Food, on_delete=models.SET_NULL, null=True, related_name='breakfast_plans')
-    lunch = models.ForeignKey(Food, on_delete=models.SET_NULL, null=True, related_name='lunch_plans')
-    dinner = models.ForeignKey(Food, on_delete=models.SET_NULL, null=True, related_name='dinner_plans')
+    # Meals (Many-to-Many for multiple foods per meal)
+    breakfast = models.ManyToManyField(Food, related_name='breakfast_plans', blank=True)
+    lunch = models.ManyToManyField(Food, related_name='lunch_plans', blank=True)
+    dinner = models.ManyToManyField(Food, related_name='dinner_plans', blank=True)
     
     # Nutritional totals
     total_calories = models.DecimalField(max_digits=6, decimal_places=2)
