@@ -55,13 +55,22 @@ class MealRecommendationEngine:
         
         # Filter by budget (if specified)
         if self.user.daily_budget:
-            avg_meal_budget = float(self.user.daily_budget) / 3  # 3 meals per day
+            # Default: split daily budget across 3 meals
+            budget_divisor = 3
+            # Cluster-aware tightening for budget-conscious users
+            if self.user.cluster_name == 'Budget-Conscious Users':
+                budget_divisor = 4  # slightly cheaper options
+            avg_meal_budget = float(self.user.daily_budget) / budget_divisor
             queryset = queryset.filter(average_price__lte=avg_meal_budget)
         
         # Diabetes-aware filtering
         if self.user.diabetes_status in ['PRE_DIABETIC', 'TYPE_1', 'TYPE_2']:
             # Prioritize low GI foods, exclude high GI
             queryset = queryset.exclude(gi_category='HIGH')
+            
+            # Cluster-aware stricter filtering for diabetic management users
+            if self.user.cluster_name == 'Diabetic Management':
+                queryset = queryset.filter(is_diabetes_friendly=True)
         
         return queryset
     
@@ -124,10 +133,35 @@ class MealRecommendationEngine:
         selected_foods = []
         total_calories = 0
         
+        # Helper functions for simple realism rules
+        def has_full_meal(meal_items):
+            """Check if any selected item is a complete meal (MEAL category)."""
+            return any(getattr(f, "category", None) == "MEAL" for f in meal_items)
+        
+        def beverage_count(meal_items):
+            """Count how many beverages are already in the meal."""
+            return sum(1 for f in meal_items if getattr(f, "category", None) == "BEVERAGE")
+        
+        def has_non_beverage(meal_items):
+            """Check if the meal contains at least one non-beverage item."""
+            return any(getattr(f, "category", None) != "BEVERAGE" for f in meal_items)
+        
         # First pass: Try to get close to target
         for food, score in food_scores:
             if len(selected_foods) >= max_items:
                 break
+            
+            # Realism rule 1: At most one full meal (MEAL category) per meal
+            if getattr(food, "category", None) == "MEAL" and has_full_meal(selected_foods):
+                continue
+            
+            # Realism rule 2: At most one beverage per meal, and beverages only as add-ons
+            if getattr(food, "category", None) == "BEVERAGE":
+                if beverage_count(selected_foods) >= 1:
+                    continue
+                # Only add beverage if there is at least one non-beverage already
+                if not has_non_beverage(selected_foods):
+                    continue
             
             # Check if adding this food helps reach target
             new_total = total_calories + float(food.calories)
@@ -147,6 +181,16 @@ class MealRecommendationEngine:
             remaining_foods = [f for f, s in food_scores if f.id not in exclude_foods]
             
             for food in remaining_foods[:max_items - len(selected_foods)]:
+                # Apply the same realism rules in the second pass
+                if getattr(food, "category", None) == "MEAL" and has_full_meal(selected_foods):
+                    continue
+                
+                if getattr(food, "category", None) == "BEVERAGE":
+                    if beverage_count(selected_foods) >= 1:
+                        continue
+                    if not has_non_beverage(selected_foods):
+                        continue
+                
                 new_total = total_calories + float(food.calories)
                 if new_total <= target_calories * 1.3:
                     selected_foods.append(food)
@@ -179,16 +223,16 @@ class MealRecommendationEngine:
         
         selected_food_ids = []
         
-        # Select breakfast (1-4 items)
-        breakfast = self.select_meal('Breakfast', breakfast_calories, selected_food_ids, max_items=4)
+        # Select breakfast (1-3 items for a lighter meal)
+        breakfast = self.select_meal('Breakfast', breakfast_calories, selected_food_ids, max_items=3)
         selected_food_ids.extend([f.id for f in breakfast])
         
-        # Select lunch (2-4 items)
-        lunch = self.select_meal('Lunch', lunch_calories, selected_food_ids, max_items=4)
+        # Select lunch (2-5 items for higher calories)
+        lunch = self.select_meal('Lunch', lunch_calories, selected_food_ids, max_items=5)
         selected_food_ids.extend([f.id for f in lunch])
         
-        # Select dinner (2-4 items)
-        dinner = self.select_meal('Dinner', dinner_calories, selected_food_ids, max_items=4)
+        # Select dinner (2-5 items for higher calories)
+        dinner = self.select_meal('Dinner', dinner_calories, selected_food_ids, max_items=5)
         
         # Calculate totals
         all_meals = breakfast + lunch + dinner
