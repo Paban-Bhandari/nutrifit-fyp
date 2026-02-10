@@ -2,6 +2,7 @@ from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.authentication import SessionAuthentication
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -12,11 +13,19 @@ from .serializers import (
     UserSerializer
 )
 
+
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+    """Session auth that does not enforce CSRF (for API clients like Thunder Client)."""
+    def enforce_csrf(self, request):
+        pass
+
+
 class RegisterView(generics.CreateAPIView):
     """API endpoint for user registration"""
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+    authentication_classes = []
     
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -35,7 +44,8 @@ class RegisterView(generics.CreateAPIView):
 class LoginView(APIView):
     """API endpoint for user login"""
     permission_classes = [AllowAny]
-    
+    authentication_classes = []
+
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -68,7 +78,8 @@ class LoginView(APIView):
 class LogoutView(APIView):
     """API endpoint for user logout"""
     permission_classes = [IsAuthenticated]
-    
+    authentication_classes = [CsrfExemptSessionAuthentication]
+
     def post(self, request):
         logout(request)
         return Response({
