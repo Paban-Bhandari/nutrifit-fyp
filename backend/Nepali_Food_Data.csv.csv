@@ -132,12 +132,7 @@ food_id,name,category,calories,protein,carbohydrates,fats,glycemic_index,gi_cate
 131,Barfi (Milk Sweet),Dessert,280,6.5,42.0,10.0,75,High,60,TRUE,dessert,Dense milk-based sweet popular during festivals
 132,Laddoo (Sweet Ball),Dessert,220,4.5,36.0,8.0,70,High,20,TRUE,dessert,Round sweet ball made from besan or boondi
 133,Sel Roti Swari,Dessert,230,3.0,38.0,8.5,72,High,25,TRUE,dessert/breakfast,Thicker sweeter version of sel roti
-134,Buckwheat Flour (Phapar Ko Pitho),Grain,340,13.0,71.5,3.5,54,Medium,50,TRUE,breakfast/lunch,Buckwheat flour used to make dhido or roti gluten free
-135,Millet Flour (Kodo Ko Pitho),Grain,335,7.5,67.0,3.5,54,Medium,45,TRUE,breakfast/lunch,Finger millet flour for dhido or roti high in calcium
-136,Wheat Flour (Maida Refined),Grain,360,10.0,76.0,1.5,85,High,30,TRUE,all,Refined white wheat flour used for roti puri and baking
-137,Whole Wheat Flour (Atta),Grain,340,12.0,72.0,2.0,69,Medium,25,TRUE,all,Whole grain wheat flour higher fibre than refined
-138,Rice Flour (Chamal Ko Pitho),Grain,365,6.0,80.0,1.5,78,High,30,TRUE,all,Fine rice flour used for sel roti and other traditional snacks
-139,Corn Flour (Makai Ko Pitho),Grain,362,6.5,79.0,3.0,70,High,25,TRUE,all,Corn flour used for dhido and roti in hilly regions
+
 140,Beaten Rice Fine (Sukha Chiura),Grain,200,3.5,43.0,1.0,70,High,28,TRUE,breakfast/snack,Fine grade beaten rice used in bhuja mix and snacks
 141,Masaura (Lentil Nuggets),Side Dish,160,10.5,20.0,4.5,25,Low,30,TRUE,lunch/dinner,Sun dried lentil and vegetable nuggets fried before use
 142,Masyaura Ko Tarkari (Nugget Curry),Side Dish,175,11.0,22.0,5.5,25,Low,40,TRUE,lunch/dinner,Curry made with dried lentil and gourd nuggets
