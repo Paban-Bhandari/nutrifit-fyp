@@ -111,8 +111,8 @@ class MealRecommendationEngine:
         if exclude_foods is None:
             exclude_foods = []
         
-        # Get foods suitable for this meal type
-        foods = self.foods.filter(meal_type__contains=meal_type)
+        # Get foods suitable for this meal type (icontains: CSV uses lowercase e.g. breakfast, lunch/dinner)
+        foods = self.foods.filter(meal_type__icontains=meal_type)
         
         # Apply constraints
         foods = self.apply_constraints(foods)
@@ -282,10 +282,10 @@ class MealRecommendationEngine:
         if exclude_foods is None:
             exclude_foods = []
         
-        foods = self.foods.filter(meal_type__contains=meal_type)
+        foods = self.foods.filter(meal_type__icontains=meal_type)
         foods = self.apply_constraints(foods)
         foods = foods.exclude(id__in=exclude_foods)
-        
+
         food_scores = self.calculate_similarity_scores(foods)
         
         return [food for food, score in food_scores[:limit]]

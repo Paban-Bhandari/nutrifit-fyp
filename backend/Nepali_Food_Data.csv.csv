@@ -1,0 +1,201 @@
+food_id,name,category,calories,protein,carbohydrates,fats,glycemic_index,gi_category,price,is_vegetarian,meal_type,description
+1,Dal Bhat (Rice + Lentil),Main Course,350,14.5,62.0,3.5,65,Medium,45,TRUE,lunch/dinner,Traditional Nepali staple meal of steamed rice and lentil soup
+2,Dhido (Buckwheat),Main Course,280,5.0,58.0,1.5,54,Medium,30,TRUE,lunch/dinner,Traditional buckwheat porridge often eaten with gundruk or curry
+3,Dhido (Millet),Main Course,290,6.0,60.0,2.0,54,Medium,28,TRUE,lunch/dinner,Traditional finger millet porridge rich in calcium and iron
+4,Dhido (Maize),Main Course,270,5.5,56.0,2.0,70,High,20,TRUE,lunch/dinner,Cornmeal porridge popular in hilly and Terai regions
+5,Roti (Wheat Chapati),Bread,120,3.5,22.0,2.5,62,Medium,5,TRUE,breakfast/lunch/dinner,Whole wheat flatbread cooked on tawa
+6,Sel Roti,Bread,210,3.2,35.0,7.5,72,High,20,TRUE,breakfast/snack,Traditional Nepali sweet ring-shaped rice flour bread fried in oil
+7,Chiura (Beaten Rice),Grain,190,3.5,41.0,1.2,70,High,30,TRUE,breakfast/snack,Flattened rice flakes eaten with curd or vegetables
+8,White Rice (Steamed),Grain,200,4.0,44.0,0.5,73,High,35,TRUE,lunch/dinner,Plain steamed white rice the staple of Nepali meals
+9,Brown Rice (Steamed),Grain,215,4.5,44.5,1.8,50,Low,40,TRUE,lunch/dinner,Whole grain brown rice lower GI than white rice
+10,Makai Ko Dhido (Corn Porridge),Grain,260,5.5,54.0,2.5,70,High,20,TRUE,breakfast/lunch,Cornmeal porridge popular in hilly regions of Nepal
+11,Musuro Dal (Red Lentil Soup),Lentil/Dal,180,12.0,28.0,1.5,29,Low,35,TRUE,lunch/dinner,Red lentil soup high in protein and iron commonly eaten daily
+12,Chana Dal (Split Chickpea Soup),Lentil/Dal,190,12.5,30.0,2.0,11,Low,40,TRUE,lunch/dinner,Yellow split chickpea lentil soup rich in protein
+13,Mung Dal (Green Gram Soup),Lentil/Dal,160,10.5,26.5,1.0,25,Low,38,TRUE,lunch/dinner,Green gram soup easy to digest good for sick people
+14,Rajma (Kidney Bean Curry),Lentil/Dal,210,13.5,35.0,1.5,29,Low,50,TRUE,lunch/dinner,Red kidney bean curry high in protein and fibre
+15,Kwati (Mixed Sprouted Bean Soup),Lentil/Dal,220,14.5,35.0,3.0,32,Low,50,TRUE,lunch/dinner,Mixed nine-bean sprouted soup traditional festival food
+16,Black Eyed Peas Curry (Bodi Dal),Lentil/Dal,195,13.0,33.0,1.8,42,Low,45,TRUE,lunch/dinner,Black eyed pea curry popular in Nepali households
+17,Tarkari Dal (Mixed Vegetable Lentil),Lentil/Dal,185,11.0,29.0,2.5,35,Low,40,TRUE,lunch/dinner,Lentil soup cooked with seasonal vegetables
+18,Gahat Ko Dal (Horse Gram),Lentil/Dal,200,14.0,32.0,1.5,29,Low,35,TRUE,lunch/dinner,Horse gram lentil soup popular in hilly regions good for kidney stones
+19,Maas Ko Dal (Black Lentil),Lentil/Dal,205,13.5,33.0,2.0,30,Low,40,TRUE,lunch/dinner,Whole black lentil soup rich in iron and protein
+20,Simi Ko Dal (Field Bean),Lentil/Dal,190,12.0,31.0,1.8,35,Low,38,TRUE,lunch/dinner,Field bean soup high in protein and fibre
+21,Chicken Curry (Kukhura Ko Masu),Curry,220,25.0,8.0,10.5,0,None,150,FALSE,lunch/dinner,Spiced Nepali style chicken curry with onion tomato and spices
+22,Mutton Curry (Khasi Ko Masu),Curry,280,24.0,6.5,17.0,0,None,200,FALSE,lunch/dinner,Slow cooked spiced goat meat curry
+23,Buffalo Meat Curry (Buff),Curry,175,26.0,0.0,7.5,0,None,180,FALSE,lunch/dinner,Spiced buffalo meat curry common and affordable in Nepal
+24,Fish Curry (Macha Ko Tarkari),Curry,165,22.0,5.5,6.5,0,None,160,FALSE,lunch/dinner,Freshwater fish curry with mustard oil and spices
+25,Egg Curry (Anda Ko Tarkari),Curry,180,12.5,8.0,11.5,0,None,80,FALSE,lunch/dinner,Hard boiled eggs in spiced tomato and onion gravy
+26,Aloo Tama (Potato Bamboo Shoot),Curry,180,5.5,28.0,5.5,55,Medium,60,TRUE,lunch/dinner,Fermented bamboo shoot and potato curry traditional Nepali dish
+27,Aloo Cauli (Potato Cauliflower),Vegetable,140,4.5,25.0,3.5,65,Medium,55,TRUE,lunch/dinner,Dry stir fry of potato and cauliflower with spices
+28,Pork Curry (Bangur Ko Masu),Curry,260,22.0,5.0,17.0,0,None,170,FALSE,lunch/dinner,Spiced pork curry popular in certain communities in Nepal
+29,Chicken Sekuwa (Grilled),Grilled,210,28.0,3.0,9.5,0,None,160,FALSE,lunch/dinner,Marinated grilled chicken pieces popular Nepali BBQ
+30,Mutton Sekuwa (Grilled),Grilled,245,26.0,2.5,14.0,0,None,200,FALSE,lunch/dinner,Marinated grilled goat meat pieces
+31,Spinach Saag (Palungo),Vegetable,55,3.5,8.0,1.2,15,Low,30,TRUE,lunch/dinner,Sauteed spinach with garlic and mustard oil high in iron
+32,Mustard Greens (Rayo Ko Saag),Vegetable,48,3.8,7.5,0.8,10,Low,25,TRUE,lunch/dinner,Stir fried mustard green leaves with garlic common in winter
+33,Bitter Gourd Fry (Karela),Vegetable,75,2.5,13.5,2.5,18,Low,35,TRUE,lunch/dinner,Stir fried bitter gourd excellent for blood sugar management
+34,Bhindi Fry (Okra),Vegetable,95,2.8,16.0,3.2,20,Low,50,TRUE,lunch/dinner,Stir fried okra with turmeric and spices
+35,Tama Ko Tarkari (Bamboo Shoot),Vegetable,85,3.5,14.0,2.0,25,Low,45,TRUE,lunch/dinner,Fermented bamboo shoot curry with black eyed peas
+36,Aloo Ko Tarkari (Potato Curry),Vegetable,150,3.0,28.0,4.0,65,Medium,40,TRUE,breakfast/lunch/dinner,Spiced potato curry eaten with roti or rice
+37,Bodi Ko Tarkari (Long Beans),Vegetable,80,5.0,14.0,1.5,20,Low,40,TRUE,lunch/dinner,Long bean stir fry with spices and oil
+38,Lauka Ko Tarkari (Bottle Gourd),Vegetable,70,1.5,14.5,0.8,15,Low,30,TRUE,lunch/dinner,Bottle gourd curry mild and easy to digest
+39,Baigan Ko Tarkari (Eggplant),Vegetable,90,2.5,16.0,3.0,15,Low,35,TRUE,lunch/dinner,Spiced eggplant curry also known as baingan
+40,Kerau Ko Tarkari (Green Peas),Vegetable,110,7.0,19.0,1.5,48,Low,50,TRUE,lunch/dinner,Green pea curry rich in plant protein
+41,Farasbi Ko Tarkari (Green Beans),Vegetable,75,3.0,13.5,1.5,20,Low,40,TRUE,lunch/dinner,French beans stir fry with onion and spices
+42,Pharsi Ko Tarkari (Pumpkin),Vegetable,80,2.0,18.0,0.5,75,High,30,TRUE,lunch/dinner,Pumpkin curry sweet and nutritious
+43,Bhatmas Ko Tarkari (Soybean Curry),Protein,195,17.5,12.0,8.5,18,Low,55,TRUE,lunch/dinner,Spiced boiled soybean curry high in plant protein
+44,Paneer Tarkari (Cottage Cheese Curry),Curry,265,18.0,8.0,18.0,27,Low,120,TRUE,lunch/dinner,Fresh cottage cheese in spiced tomato gravy
+45,Paneer Bhurji (Scrambled Paneer),Protein,240,16.0,6.0,17.0,27,Low,110,TRUE,breakfast/lunch,Scrambled spiced cottage cheese with vegetables
+46,Tofu Ko Tarkari (Tofu Curry),Protein,120,10.0,6.0,7.5,15,Low,90,TRUE,lunch/dinner,Firm tofu cooked in Nepali spiced curry
+47,Chana Masala (Chickpea Curry),Lentil/Dal,225,12.0,34.0,5.5,28,Low,55,TRUE,lunch/dinner,Whole chickpea spiced curry popular across Nepal
+48,Aloo Methi (Potato Fenugreek),Vegetable,135,3.5,24.0,4.0,55,Medium,45,TRUE,lunch/dinner,Potato and fenugreek leaves stir fry
+49,Saag Paneer (Spinach Cheese),Curry,240,15.0,10.0,16.0,15,Low,130,TRUE,lunch/dinner,Pureed spinach with paneer cubes in spiced gravy
+50,Mix Vegetable Tarkari,Vegetable,110,4.0,18.0,3.5,35,Low,60,TRUE,lunch/dinner,Seasonal mixed vegetable curry with Nepali spices
+51,Gundruk Ko Jhol (Fermented Greens),Side Dish,45,4.2,6.5,0.8,15,Low,25,TRUE,lunch/dinner,Fermented leafy green vegetable soup rich in probiotics
+52,Sinki Ko Jhol (Fermented Radish),Side Dish,35,2.5,5.8,0.5,10,Low,20,TRUE,lunch/dinner,Fermented radish taproot soup traditional Nepali preserve
+53,Tomato Achar (Chutney),Condiment,55,1.8,9.5,1.5,30,Low,15,TRUE,lunch/dinner,Roasted tomato chutney with garlic and chilli
+54,Sesame Achar (Til Ko Achar),Condiment,90,3.0,5.5,7.0,35,Low,20,TRUE,lunch/dinner,Ground sesame seed chutney with chilli and lemon
+55,Cucumber Salad (Kakro Ko Achar),Salad,25,1.0,5.5,0.2,15,Low,20,TRUE,breakfast/lunch/dinner,Fresh cucumber with mustard seeds lemon and chilli
+56,Mula Ko Achar (Radish Pickle),Condiment,30,1.2,6.0,0.3,15,Low,15,TRUE,lunch/dinner,Fermented or fresh radish pickle tangy and spicy
+57,Aloo Ko Achar (Potato Salad),Condiment,120,2.5,20.0,3.5,55,Medium,25,TRUE,snack/lunch,Boiled potato mixed with sesame chilli and lemon Newari style
+58,Bhatmas Ko Achar (Soybean Pickle),Condiment,110,8.5,7.0,5.5,18,Low,20,TRUE,snack,Roasted soybean pickle with spices popular snack
+59,Lapsi Ko Achar (Hog Plum Pickle),Condiment,80,0.5,19.0,0.5,40,Low,20,TRUE,snack,Tangy hog plum pickle with chilli and spices
+60,Green Chutney (Hariyo Achar),Condiment,40,2.0,6.0,1.2,10,Low,10,TRUE,all,Fresh coriander and mint chutney with garlic
+61,Boiled Egg,Protein,155,13.0,1.5,11.0,0,None,15,FALSE,breakfast/snack,Hard boiled chicken egg good source of complete protein
+62,Fried Egg (Taareko Anda),Protein,185,12.5,1.0,14.5,0,None,20,FALSE,breakfast,Egg fried in mustard oil
+63,Scrambled Egg (Anda Bhurji),Protein,175,12.0,2.0,13.0,0,None,25,FALSE,breakfast,Scrambled egg with onion tomato and spices
+64,Omelette (Plain),Protein,170,12.0,1.5,13.0,0,None,25,FALSE,breakfast,Plain egg omelette cooked in oil
+65,Chicken Breast (Boiled),Protein,165,31.0,0.0,3.6,0,None,120,FALSE,lunch/dinner,Boiled skinless chicken breast lean high protein food
+66,Curd / Dahi (Plain Yogurt),Dairy,98,5.5,8.5,4.8,36,Low,40,TRUE,breakfast/snack,Plain yogurt good for digestion and gut health
+67,Milk Full Fat (Dudh),Dairy,120,6.0,9.5,6.5,40,Low,30,TRUE,breakfast,Full cream cow or buffalo milk common daily beverage
+68,Low Fat Milk,Dairy,80,5.5,10.0,2.0,40,Low,28,TRUE,breakfast,Low fat cow milk good for weight management
+69,Paneer (Fresh Cottage Cheese),Dairy,265,18.0,4.0,20.0,27,Low,120,TRUE,all,Fresh homemade cottage cheese high in protein and calcium
+70,Ghee (Clarified Butter),Fat,450,0.5,0.0,49.9,0,None,80,TRUE,all,Clarified butter used in cooking and as topping on dal bhat
+71,Mustard Oil (Tori Ko Tel),Fat,884,0.0,0.0,100.0,0,None,60,TRUE,all,Cold pressed mustard seed oil primary cooking oil in Nepal
+72,Coconut Oil,Fat,860,0.0,0.0,100.0,0,None,100,TRUE,all,Coconut oil used in some Terai and coastal-influenced cooking
+73,Lassi (Sweet Yogurt Drink),Beverage,150,5.5,24.0,4.5,52,Medium,35,TRUE,breakfast/snack,Sweet blended yogurt drink refreshing and filling
+74,Masala Chai (Spiced Milk Tea),Beverage,55,2.0,7.5,2.0,50,Low,15,TRUE,breakfast/snack,Spiced tea with milk sugar ginger and cardamom
+75,Black Tea (Kalo Chiya),Beverage,5,0.0,1.0,0.0,0,None,10,TRUE,breakfast/snack,Plain black tea without milk very low calorie
+76,Butter Tea (Suja / Po Cha),Beverage,90,1.5,3.0,8.0,0,None,20,TRUE,breakfast,Tibetan butter tea with salt popular in mountain regions
+77,Sugarcane Juice (Ukhu Ko Ras),Beverage,60,0.2,15.5,0.1,70,High,20,TRUE,snack,Fresh pressed sugarcane juice sweet street drink
+78,Lemon Water (Nibuwa Pani),Beverage,10,0.2,3.0,0.0,5,Low,5,TRUE,all,Fresh lemon squeezed in water with salt hydrating drink
+79,Momo Veg (Steamed Dumpling),Snack,220,8.5,32.0,7.0,45,Low,100,TRUE,snack/lunch,Steamed dumplings filled with spiced vegetables
+80,Momo Chicken (Steamed Dumpling),Snack,240,15.0,28.0,8.5,45,Low,120,FALSE,snack/lunch,Steamed dumplings filled with minced chicken
+81,Momo Buff (Steamed Dumpling),Snack,235,16.0,27.0,8.0,45,Low,110,FALSE,snack/lunch,Steamed dumplings filled with minced buffalo meat
+82,Fried Momo (Kothe Momo),Snack,290,14.0,30.0,13.5,50,Low,130,FALSE,snack,Pan fried or deep fried momo crispy outside
+83,Chow Mein Veg (Stir Fried Noodles),Noodles,280,8.0,48.0,7.5,60,Medium,80,TRUE,lunch/dinner,Stir fried vegetable noodles popular Nepali street food
+84,Chow Mein Chicken,Noodles,320,18.0,45.0,8.5,60,Medium,120,FALSE,lunch/dinner,Stir fried chicken noodles
+85,Thukpa Veg (Noodle Soup),Soup,230,8.5,38.0,5.0,50,Low,80,TRUE,lunch/dinner,Tibetan style vegetable noodle soup popular in hilly areas
+86,Thukpa Chicken (Noodle Soup),Soup,260,15.0,37.0,6.0,50,Low,120,FALSE,lunch/dinner,Tibetan style chicken noodle soup
+87,Samosa (Fried Pastry),Snack,165,4.0,22.0,7.5,50,Low,25,TRUE,snack,Deep fried pastry shell with spiced potato filling
+88,Chatamari Veg (Newari Rice Crepe),Snack,175,6.5,30.0,4.0,65,Medium,70,TRUE,breakfast/snack,Traditional Newari rice flour crepe with vegetable topping
+89,Chatamari Egg (Newari Rice Crepe),Snack,195,8.0,30.0,5.5,65,Medium,80,FALSE,breakfast/snack,Traditional Newari rice flour crepe topped with egg
+90,Yomari (Sweet Rice Dumpling),Dessert,180,3.5,35.0,4.0,70,High,40,TRUE,snack/dessert,Traditional Newari steamed rice flour dumpling filled with chaku
+91,Peanuts Roasted (Bhutuwa Badam),Snack,165,7.5,6.0,13.5,14,Low,25,TRUE,snack,Roasted peanuts affordable high protein snack
+92,Peanuts Boiled,Snack,140,7.0,8.5,10.0,14,Low,20,TRUE,snack,Boiled peanuts softer and lower calorie than roasted
+93,Sel Roti with Ghee,Breakfast,250,3.5,37.0,10.5,72,High,30,TRUE,breakfast,Sel roti served with ghee special breakfast treat
+94,Aloo Paratha (Stuffed Flatbread),Bread,220,5.5,32.0,8.5,65,Medium,40,TRUE,breakfast/lunch,Whole wheat flatbread stuffed with spiced mashed potato
+95,Puri (Deep Fried Bread),Bread,195,4.0,28.0,8.5,70,High,20,TRUE,breakfast/snack,Deep fried wheat flour puri puffy and crispy
+96,Makai Ko Roti (Corn Flour Flatbread),Bread,110,3.0,22.0,2.0,70,High,10,TRUE,breakfast/lunch,Flatbread made from corn flour popular in hilly Nepal
+97,Kodo Ko Roti (Millet Flatbread),Bread,115,4.0,22.5,2.2,54,Medium,10,TRUE,breakfast/lunch,Flatbread made from finger millet nutritious and high in calcium
+98,Buckwheat Roti (Phapar Ko Roti),Bread,120,5.0,22.0,2.5,54,Medium,15,TRUE,breakfast/lunch,Gluten free flatbread made from buckwheat flour
+99,Wai Wai (Instant Noodles),Snack,380,8.5,55.0,14.5,72,High,30,TRUE,snack/lunch,Popular Nepali instant noodle snack can be eaten raw or cooked
+100,Instant Noodle Soup (Wai Wai Cooked),Noodles,320,9.0,52.0,10.0,72,High,35,TRUE,lunch/snack,Cooked Wai Wai instant noodle soup
+101,Banana (Kera),Fruit,89,1.1,22.8,0.3,51,Low,15,TRUE,breakfast/snack,Ripe banana affordable and energy-rich fruit
+102,Guava (Amba),Fruit,68,2.5,14.0,0.9,12,Low,20,TRUE,snack,Fresh guava very high in Vitamin C and dietary fibre
+103,Apple (Syau),Fruit,52,0.3,14.0,0.2,36,Low,35,TRUE,snack,Fresh apple high in antioxidants and fibre
+104,Mango (Aanp),Fruit,65,0.8,17.0,0.4,56,Medium,30,TRUE,snack,Fresh ripe mango rich in Vitamin A and C seasonal fruit
+105,Watermelon (Tarbuja),Fruit,30,0.6,7.5,0.2,72,High,25,TRUE,snack,Fresh watermelon hydrating summer fruit
+106,Lapsi (Hog Plum),Fruit,70,0.5,17.5,0.3,40,Low,20,TRUE,snack,Nepali hog plum sour fruit high in Vitamin C
+107,Papaya (Mewa),Fruit,43,0.5,11.0,0.3,60,Medium,20,TRUE,snack,Fresh papaya rich in digestive enzymes and Vitamin C
+108,Pineapple (Bhuin Katahar),Fruit,50,0.5,13.0,0.1,59,Medium,30,TRUE,snack,Fresh pineapple rich in Vitamin C and bromelain
+109,Orange (Suntala),Fruit,47,0.9,11.8,0.1,43,Low,20,TRUE,snack,Fresh orange high in Vitamin C common in winter
+110,Pomelo (Bhogate),Fruit,38,0.8,9.6,0.1,25,Low,30,TRUE,snack,Large citrus fruit popular during Tihar festival
+111,Lemon (Nibuwa),Fruit,29,1.1,9.3,0.3,20,Low,10,TRUE,all,Fresh lemon used for flavouring and Vitamin C
+112,Lime (Kagati),Fruit,30,0.7,10.5,0.2,20,Low,10,TRUE,all,Small lime used extensively in Nepali cooking and drinks
+113,Pear (Nashpati),Fruit,57,0.4,15.2,0.1,38,Low,35,TRUE,snack,Fresh pear high in fibre and antioxidants
+114,Plum (Arubakhada),Fruit,46,0.7,11.4,0.3,40,Low,25,TRUE,snack,Fresh plum good source of Vitamin C and antioxidants
+115,Jackfruit (Katahar) Green Curry,Vegetable,100,2.8,22.0,0.8,50,Low,50,TRUE,lunch/dinner,Raw jackfruit curry similar texture to pulled meat
+116,Jackfruit (Katahar) Ripe,Fruit,95,1.7,23.2,0.6,75,High,40,TRUE,snack,Ripe sweet jackfruit eaten as fruit
+117,Almonds (Baadam),Snack,175,6.5,6.5,15.0,0,None,80,TRUE,snack,Raw almonds nutrient dense healthy fat and protein rich
+118,Walnuts (Okhar),Snack,185,4.5,4.0,18.5,15,Low,70,TRUE,snack,Fresh walnuts brain food rich in omega-3 fatty acids widely grown in Nepal
+119,Cashew Nuts (Kaju),Snack,155,5.2,9.0,12.5,22,Low,100,TRUE,snack,Roasted or raw cashew nuts popular snack and cooking ingredient
+120,Sunflower Seeds (Suryamukhi Bij),Snack,145,5.5,5.0,12.5,35,Low,40,TRUE,snack,Roasted sunflower seeds high in Vitamin E
+121,Pumpkin Seeds (Pharsi Ko Bij),Snack,150,9.0,4.5,13.0,25,Low,30,TRUE,snack,Roasted pumpkin seeds high in zinc and magnesium
+122,Maize Roasted (Bhutuwa Makai),Snack,120,3.5,24.0,1.5,55,Medium,15,TRUE,snack,Roasted corn on the cob popular roadside snack
+123,Popcorn (Plain),Snack,90,3.0,18.0,1.5,65,Medium,20,TRUE,snack,Air popped corn low calorie whole grain snack
+124,Chana Bhatmas Mix (Roasted Mix),Snack,145,9.5,15.0,5.5,20,Low,25,TRUE,snack,Mixed roasted chickpea and soybean crunchy protein snack
+125,Mudhi (Puffed Rice),Snack,100,2.5,22.5,0.5,72,High,15,TRUE,snack,Puffed rice light snack eaten with beaten rice mix
+126,Chura Matar (Beaten Rice Peas),Snack,210,8.5,38.0,4.0,55,Medium,40,TRUE,snack/breakfast,Beaten rice with green peas spices and lemon
+127,Lapsi Candy (Hog Plum Sweet),Snack,85,0.3,21.0,0.2,55,Medium,10,TRUE,snack,Dried hog plum candy popular Nepali sweet snack
+128,Kheer (Rice Pudding),Dessert,195,5.5,32.0,6.0,65,Medium,50,TRUE,dessert,Sweet rice pudding with milk sugar and cardamom
+129,Halwa (Semolina Sweet),Dessert,210,3.5,35.0,8.0,65,Medium,40,TRUE,dessert,Sweet semolina pudding with ghee and dry fruits
+130,Jeri / Jalebi (Fried Sweet),Dessert,250,3.0,48.0,6.5,95,High,30,TRUE,dessert,Deep fried batter soaked in sugar syrup very high GI
+131,Barfi (Milk Sweet),Dessert,280,6.5,42.0,10.0,75,High,60,TRUE,dessert,Dense milk-based sweet popular during festivals
+132,Laddoo (Sweet Ball),Dessert,220,4.5,36.0,8.0,70,High,20,TRUE,dessert,Round sweet ball made from besan or boondi
+133,Sel Roti Swari,Dessert,230,3.0,38.0,8.5,72,High,25,TRUE,dessert/breakfast,Thicker sweeter version of sel roti
+134,Buckwheat Flour (Phapar Ko Pitho),Grain,340,13.0,71.5,3.5,54,Medium,50,TRUE,breakfast/lunch,Buckwheat flour used to make dhido or roti gluten free
+135,Millet Flour (Kodo Ko Pitho),Grain,335,7.5,67.0,3.5,54,Medium,45,TRUE,breakfast/lunch,Finger millet flour for dhido or roti high in calcium
+136,Wheat Flour (Maida Refined),Grain,360,10.0,76.0,1.5,85,High,30,TRUE,all,Refined white wheat flour used for roti puri and baking
+137,Whole Wheat Flour (Atta),Grain,340,12.0,72.0,2.0,69,Medium,25,TRUE,all,Whole grain wheat flour higher fibre than refined
+138,Rice Flour (Chamal Ko Pitho),Grain,365,6.0,80.0,1.5,78,High,30,TRUE,all,Fine rice flour used for sel roti and other traditional snacks
+139,Corn Flour (Makai Ko Pitho),Grain,362,6.5,79.0,3.0,70,High,25,TRUE,all,Corn flour used for dhido and roti in hilly regions
+140,Beaten Rice Fine (Sukha Chiura),Grain,200,3.5,43.0,1.0,70,High,28,TRUE,breakfast/snack,Fine grade beaten rice used in bhuja mix and snacks
+141,Masaura (Lentil Nuggets),Side Dish,160,10.5,20.0,4.5,25,Low,30,TRUE,lunch/dinner,Sun dried lentil and vegetable nuggets fried before use
+142,Masyaura Ko Tarkari (Nugget Curry),Side Dish,175,11.0,22.0,5.5,25,Low,40,TRUE,lunch/dinner,Curry made with dried lentil and gourd nuggets
+143,Tarkari Pakoda (Vegetable Fritter),Snack,185,5.0,22.0,9.0,55,Medium,40,TRUE,snack,Vegetable fritters dipped in besan batter and fried
+144,Aloo Pakoda (Potato Fritter),Snack,175,4.0,24.0,8.0,65,Medium,30,TRUE,snack,Potato slices coated in spiced besan batter and deep fried
+145,Dahi Chiura (Curd with Beaten Rice),Breakfast,245,8.0,42.0,5.5,60,Medium,55,TRUE,breakfast,Beaten rice mixed with plain yogurt traditional breakfast
+146,Dahi Bhat (Curd Rice),Breakfast,255,8.5,45.0,5.0,65,Medium,50,TRUE,breakfast/lunch,Steamed rice mixed with plain yogurt
+147,Chiura with Achar,Breakfast,220,4.5,46.0,2.5,65,Medium,35,TRUE,breakfast,Beaten rice served with tomato or radish pickle
+148,Oats (Plain Cooked),Breakfast,150,5.0,27.0,3.0,55,Medium,40,TRUE,breakfast,Cooked plain oatmeal nutritious low GI breakfast
+149,Oats with Milk and Banana,Breakfast,250,9.0,45.0,5.0,52,Medium,65,TRUE,breakfast,Oatmeal cooked with milk topped with banana
+150,Muesli with Milk,Breakfast,280,9.5,48.0,6.5,55,Medium,80,TRUE,breakfast,Mixed grain muesli with milk and dry fruits
+151,Bread Toast with Butter,Breakfast,185,5.5,28.0,7.0,75,High,35,TRUE,breakfast,Toasted white or brown bread with butter
+152,Bread Toast with Egg,Breakfast,245,13.5,26.0,11.0,75,High,50,FALSE,breakfast,Toasted bread with fried or scrambled egg
+153,Makai Ko Tarkari (Corn Curry),Vegetable,130,4.0,25.0,3.5,55,Medium,40,TRUE,lunch/dinner,Fresh corn kernels cooked in spiced curry
+154,Kerau Aloo (Pea Potato Curry),Vegetable,155,6.0,27.5,3.5,55,Medium,50,TRUE,lunch/dinner,Green pea and potato curry spiced with cumin and coriander
+155,Mushroom Ko Tarkari (Mushroom Curry),Vegetable,90,5.5,10.5,3.5,15,Low,80,TRUE,lunch/dinner,Button or oyster mushroom curry earthy and nutritious
+156,Sag Masu (Greens with Meat),Curry,185,18.0,8.0,9.5,15,Low,140,FALSE,lunch/dinner,Leafy greens cooked with meat typically goat or chicken
+157,Masaura Aloo (Nugget Potato Curry),Side Dish,180,8.5,28.0,5.0,55,Medium,45,TRUE,lunch/dinner,Sun dried lentil nuggets cooked with potato
+158,Chana Masala Dry (Spiced Chickpea),Snack,190,10.5,28.0,5.0,28,Low,50,TRUE,snack/lunch,Dry spiced whole chickpea preparation
+159,Fish Fry (Macha Taareko),Protein,175,23.0,5.0,7.5,0,None,160,FALSE,lunch/dinner,Fish fillets marinated and pan fried in mustard oil
+160,Chicken Chilly (Stir Fry),Curry,235,24.0,8.5,12.0,0,None,160,FALSE,lunch/dinner,Spicy stir fried chicken with capsicum and onion Chinese-Nepali style
+161,Buff Sukuti (Dried Buffalo Jerky),Snack,180,28.0,2.0,6.5,0,None,120,FALSE,snack,Dried spiced buffalo meat jerky high in protein
+162,Chicken Sukuti (Dried Chicken),Snack,160,26.0,2.5,5.0,0,None,130,FALSE,snack,Dried spiced chicken pieces high in protein
+163,Fried Rice Veg,Rice,280,7.0,48.0,7.5,73,High,80,TRUE,lunch/dinner,Stir fried rice with vegetables and soy sauce
+164,Fried Rice Chicken,Rice,320,16.0,46.0,8.5,73,High,120,FALSE,lunch/dinner,Stir fried rice with chicken and vegetables
+165,Egg Fried Rice,Rice,295,10.5,47.0,8.0,73,High,90,FALSE,lunch/dinner,Stir fried rice with scrambled egg
+166,Biryani Veg,Rice,340,8.5,58.0,10.0,65,Medium,100,TRUE,lunch/dinner,Fragrant basmati rice cooked with vegetables and spices
+167,Biryani Chicken,Rice,390,20.0,55.0,12.0,65,Medium,160,FALSE,lunch/dinner,Fragrant basmati rice cooked with chicken and whole spices
+168,Pulao (Veg Pilaf),Rice,260,6.0,46.0,7.5,65,Medium,70,TRUE,lunch/dinner,Spiced rice cooked with vegetables and whole spices
+169,Jau Ko Bhat (Barley Rice),Grain,220,6.5,45.0,1.5,25,Low,45,TRUE,lunch/dinner,Barley mixed with rice lower GI nutritious grain
+170,Farro / Spelt Porridge,Grain,200,7.5,40.0,1.5,45,Low,50,TRUE,breakfast,Ancient grain porridge nutritious and low GI
+171,Radish Stir Fry (Mula Ko Tarkari),Vegetable,55,1.8,10.0,1.5,15,Low,25,TRUE,lunch/dinner,White radish stir fry with turmeric and spices
+172,Cauliflower Soup,Soup,80,4.0,12.0,2.5,15,Low,40,TRUE,lunch/dinner,Light cauliflower soup with mild spices
+173,Lentil Soup (Clear Thukpa Style),Soup,140,10.0,20.0,2.0,29,Low,40,TRUE,lunch/dinner,Clear lentil soup with vegetables and herbs
+174,Tomato Soup,Soup,65,2.0,12.0,1.5,30,Low,30,TRUE,breakfast/lunch,Fresh tomato soup with spices and cream
+175,Pumpkin Soup (Pharsi Ko Soup),Soup,75,2.0,14.5,2.0,75,High,35,TRUE,lunch/dinner,Creamy pumpkin soup mildly spiced
+176,Spinach Soup (Palungo Ko Soup),Soup,55,3.5,7.5,1.5,15,Low,35,TRUE,lunch/dinner,Creamy spinach soup high in iron and folate
+177,Chicken Soup (Clear),Soup,90,12.5,3.5,3.0,0,None,80,FALSE,lunch/dinner,Clear chicken broth with vegetables good for recovery
+178,Mushroom Soup,Soup,70,4.5,9.0,2.5,15,Low,70,TRUE,lunch/dinner,Cream of mushroom soup
+179,Nettle Soup (Sisnoo Ko Soup),Soup,40,3.8,5.5,0.8,10,Low,15,TRUE,lunch/dinner,Wild stinging nettle soup highly nutritious traditional mountain food
+180,Sisnoo Ko Tarkari (Nettle Curry),Vegetable,50,4.0,7.0,1.0,10,Low,15,TRUE,lunch/dinner,Stinging nettle stir fry or curry very high in nutrients
+181,Jau Ko Sattu (Barley Flour Drink),Beverage,150,5.5,30.0,1.5,25,Low,20,TRUE,breakfast/snack,Roasted barley flour mixed with water or milk nutritious drink
+182,Chhaang (Millet Beer Traditional),Beverage,65,1.5,8.5,0.3,35,Low,50,FALSE,snack,Traditional fermented millet beverage mildly alcoholic
+183,Tongba (Millet Hot Beer),Beverage,70,1.5,9.0,0.3,35,Low,55,FALSE,snack,Hot fermented millet beverage sipped through bamboo straw
+184,Nimbu Pani (Lemon Water),Beverage,15,0.3,4.0,0.0,5,Low,5,TRUE,all,Fresh lemon water with salt and sugar rehydrating drink
+185,Chia Seed Drink,Beverage,80,3.0,10.0,4.0,1,Low,50,TRUE,snack,Chia seeds soaked in water with lemon and honey
+186,Turmeric Milk (Haldi Dudh),Beverage,135,6.0,12.0,7.5,40,Low,30,TRUE,breakfast/snack,Warm milk with turmeric and honey anti-inflammatory drink
+187,Ginger Tea (Aduwa Chiya),Beverage,10,0.2,2.0,0.1,0,None,10,TRUE,breakfast/snack,Fresh ginger boiled in water with a little honey
+188,Apple Juice Fresh,Beverage,48,0.2,11.8,0.1,44,Low,40,TRUE,snack,Freshly pressed apple juice without added sugar
+189,Mango Lassi,Beverage,165,4.5,30.0,4.5,55,Medium,50,TRUE,snack/breakfast,Blended mango with yogurt and milk sweet lassi
+190,Sugarcane Jaggery (Khaand/Gur),Sweetener,383,0.4,98.0,0.1,84,High,30,TRUE,all,Unrefined cane sugar used in sweets and cooking
+191,Honey (Maha),Sweetener,304,0.3,82.0,0.0,58,Medium,100,TRUE,all,Natural honey used as sweetener and in herbal remedies
+192,Coconut Fresh (Nariwal),Snack,185,2.0,8.0,17.0,45,Low,50,TRUE,snack/all,Fresh coconut meat high in healthy fats
+193,Flaxseeds (Aalsi),Snack,95,3.8,4.5,7.5,35,Low,20,TRUE,snack,Ground or whole flaxseeds high in omega-3 and fibre
+194,Hemp Seeds (Bhang Ko Bij),Snack,110,6.3,2.0,9.5,0,None,60,TRUE,snack,Hemp seeds high in complete protein and healthy fats
+195,Quinoa (Cooked),Grain,222,8.1,39.4,3.5,53,Low,120,TRUE,breakfast/lunch/dinner,Cooked quinoa complete protein grain gluten free
+196,Sweet Potato (Sakharkhanda) Boiled,Vegetable,86,1.6,20.0,0.1,63,Medium,30,TRUE,breakfast/snack,Boiled sweet potato naturally sweet and nutritious
+197,Taro Root (Pindalu) Curry,Vegetable,95,2.3,21.5,0.2,55,Medium,35,TRUE,lunch/dinner,Taro root cooked in spiced curry common Nepali vegetable
+198,Yam (Tarul) Boiled,Vegetable,118,1.5,27.0,0.2,50,Low,35,TRUE,lunch/dinner,Boiled yam earthy root vegetable high in fibre
+199,Broccoli Stir Fry,Vegetable,65,4.0,10.5,2.0,15,Low,60,TRUE,lunch/dinner,Stir fried broccoli with garlic and soy sauce
+200,Carrot Halwa (Gajar Ko Halwa),Dessert,220,4.0,32.0,9.0,50,Low,50,TRUE,dessert,Slow cooked carrot sweet with milk ghee and cardamom
