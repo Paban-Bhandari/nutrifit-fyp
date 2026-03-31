@@ -198,7 +198,7 @@ class UserProfile(models.Model):
             'fats': round(fats_grams, 2),
         }
     
-def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         """Override save to auto-calculate BMI, BMR, TDEE, macros, and assign cluster"""
         # Calculate BMI
         self.bmi = self.calculate_bmi()
