@@ -154,14 +154,18 @@ const Home = () => {
 
             {/* Floating Badges */}
             <div className="absolute top-8 -left-12 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-float z-20 border border-emerald-50">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-black text-lg">250+</div>
+              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center">
+                <UtensilsCrossed size={20} className="stroke-[2.5]" />
+              </div>
               <div>
                 <div className="text-sm font-bold text-gray-800 leading-tight">Nepali<br />Foods</div>
               </div>
             </div>
 
             <div className="absolute -bottom-8 right-8 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-float animation-delay-500 z-20 border border-emerald-50">
-              <div className="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center font-black text-sm">NPR</div>
+              <div className="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center">
+                <Wallet size={20} className="stroke-[2.5]" />
+              </div>
               <div>
                 <div className="text-sm font-bold text-gray-800 leading-tight">Budget<br />Friendly</div>
               </div>

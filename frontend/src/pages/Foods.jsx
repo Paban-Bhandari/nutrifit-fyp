@@ -75,13 +75,13 @@ const Foods = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-extrabold text-white mb-2"> Nepali Food Database</h1>
           <p className="text-emerald-200 max-w-xl mx-auto">
-            Browse {stats?.total_foods || '250+'} authentic Nepali foods with complete nutritional information.
+            Browse authentic Nepali foods with complete nutritional information.
           </p>
           {stats && (
             <div className="flex flex-wrap justify-center gap-3 mt-5">
               <StatPill label={`${stats.vegetarian} Vegetarian`} color="bg-emerald-500/30" />
-              <StatPill label={`${stats.non_vegetarian} Non-Veg`} color="bg-red-500/30" />
-              <StatPill label={`${stats.diabetes_friendly} Diabetes-Friendly`} color="bg-blue-500/30" />
+              <StatPill label={`${stats.non_vegetarian} Non-Veg`} color="bg-emerald-500/30" />
+              <StatPill label={`${stats.diabetes_friendly} Diabetes-Friendly`} color="bg-emerald-500/30" />
             </div>
           )}
         </div>
@@ -233,7 +233,7 @@ const FoodCard = ({ food }) => {
           <h3 className="font-bold text-gray-800 text-sm leading-snug line-clamp-2">
             {food.food_name}
           </h3>
-          <span className={`text-xs px-2 py-0.5 rounded-lg font-semibold flex-shrink-0 ${categoryColor(food.category)}`}>
+          <span className="text-xs px-2 py-1 rounded-lg font-medium flex-shrink-0 bg-gray-50 text-gray-600 border border-gray-100">
             {categoryLabel(food.category)}
           </span>
         </div>
@@ -257,10 +257,10 @@ const FoodCard = ({ food }) => {
 
       {/* Nutrition grid */}
       <div className="px-4 py-3 grid grid-cols-4 gap-2 text-center">
-        <NutriCell label="Cal" value={Math.round(parseFloat(food.calories))} unit="kcal" color="text-amber-600" />
-        <NutriCell label="Protein" value={parseFloat(food.protein).toFixed(1)} unit="g" color="text-red-500" />
-        <NutriCell label="Carbs" value={parseFloat(food.carbohydrates).toFixed(1)} unit="g" color="text-orange-500" />
-        <NutriCell label="Fat" value={parseFloat(food.fat).toFixed(1)} unit="g" color="text-blue-500" />
+        <NutriCell label="Cal" value={Math.round(parseFloat(food.calories))} unit="kcal" color="text-gray-900" />
+        <NutriCell label="Protein" value={parseFloat(food.protein).toFixed(1)} unit="g" color="text-gray-900" />
+        <NutriCell label="Carbs" value={parseFloat(food.carbohydrates).toFixed(1)} unit="g" color="text-gray-900" />
+        <NutriCell label="Fat" value={parseFloat(food.fat).toFixed(1)} unit="g" color="text-gray-900" />
       </div>
 
       {/* Price */}
