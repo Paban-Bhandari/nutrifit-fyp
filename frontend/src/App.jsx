@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { PageLoading } from './components/common/Loading';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy-loaded pages for code splitting
 const Home      = lazy(() => import('./pages/Home'));
@@ -54,6 +55,7 @@ const AppRoutes = () => (
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>

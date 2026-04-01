@@ -73,7 +73,7 @@ const Foods = () => {
       {/* Hero */}
       <section className="gradient-hero py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-extrabold text-white mb-2">🍛 Nepali Food Database</h1>
+          <h1 className="text-4xl font-extrabold text-white mb-2"> Nepali Food Database</h1>
           <p className="text-emerald-200 max-w-xl mx-auto">
             Browse {stats?.total_foods || '250+'} authentic Nepali foods with complete nutritional information.
           </p>

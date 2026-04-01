@@ -22,9 +22,7 @@ const Footer = () => {
               Healthy, budget-friendly meal plans tailored just for you.
             </p>
             <div className="flex items-center gap-1 text-xs text-gray-500">
-              <span>Made with</span>
-              <Heart size={12} className="text-red-400 fill-red-400" />
-              <span>in Nepal</span>
+              <span>Made in Nepal</span>
             </div>
           </div>
 
@@ -69,7 +67,7 @@ const Footer = () => {
                 href="mailto:nutrifit@example.com"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
               >
-                <Mail size={14} /> nutrifit@example.com
+                <Mail size={14} /> customer@care.nutrifit.com
               </a>
             </div>
           </div>
@@ -77,7 +75,7 @@ const Footer = () => {
 
         <div className="mt-10 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-500">
-            © {currentYear} NutriFit. Final Year Project — BIT Program.
+            © {currentYear} NutriFit.
           </p>
           <p className="text-xs text-gray-500">
             Powered by K-Means Clustering & Cosine Similarity

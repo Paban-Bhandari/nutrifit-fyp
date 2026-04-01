@@ -64,9 +64,9 @@ const steps = [
 // ── Stats ────────────────────────────────────────────────────────────────────
 const stats = [
   { value: '250+', label: 'Nepali Foods', sub: 'in our database' },
-  { value: '94%',  label: 'Accuracy',     sub: 'avg nutritional match' },
-  { value: '5',    label: 'User Clusters', sub: 'AI-grouped profiles' },
-  { value: '3',    label: 'Meals / Day',  sub: 'personalised daily' },
+  { value: '94%', label: 'Accuracy', sub: 'avg nutritional match' },
+  { value: '5', label: 'User Clusters', sub: 'AI-grouped profiles' },
+  { value: '3', label: 'Meals / Day', sub: 'personalised daily' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════

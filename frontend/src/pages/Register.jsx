@@ -190,7 +190,7 @@ const Register = () => {
             {/* ── Step 1: Account ── */}
             {step === 1 && (
               <StepSection title="Account Details" subtitle="Set up your login credentials">
-                <Input id="username" label="Username" placeholder="e.g., paban123" value={form.username} onChange={set('username')} icon={User} error={errors.username} required />
+                <Input id="username" label="Username" placeholder="e.g., pabanbhandari" value={form.username} onChange={set('username')} icon={User} error={errors.username} required />
                 <Input id="email" type="email" label="Email Address" placeholder="your@email.com" value={form.email} onChange={set('email')} icon={Mail} error={errors.email} required />
                 <PasswordField id="password" label="Password" placeholder="Min. 6 characters" value={form.password} onChange={set('password')} show={showPwd} setShow={setShowPwd} error={errors.password} />
                 <Input id="password2" type="password" label="Confirm Password" placeholder="Re-enter password" value={form.password2} onChange={set('password2')} icon={Lock} error={errors.password2} required />
@@ -201,10 +201,10 @@ const Register = () => {
             {step === 2 && (
               <StepSection title="Personal Information" subtitle="Help us get to know you">
                 <div className="grid grid-cols-2 gap-4">
-                  <Input id="first_name" label="First Name" placeholder="Paban" value={form.first_name} onChange={set('first_name')} error={errors.first_name} required />
-                  <Input id="last_name" label="Last Name" placeholder="Bhandari" value={form.last_name} onChange={set('last_name')} error={errors.last_name} required />
+                  <Input id="first_name" label="First Name" placeholder="e.g.,Paban" value={form.first_name} onChange={set('first_name')} error={errors.first_name} required />
+                  <Input id="last_name" label="Last Name" placeholder="e.g., Bhandari" value={form.last_name} onChange={set('last_name')} error={errors.last_name} required />
                 </div>
-                <Input id="age" type="number" label="Age" placeholder="25" value={form.age} onChange={set('age')} helper="Your age in years (10–120)" error={errors.age} required />
+                <Input id="age" type="number" label="Age" placeholder="e.g., 20" value={form.age} onChange={set('age')} helper="Your age in years (10–120)" error={errors.age} required />
                 <SelectField id="gender" label="Gender" value={form.gender} onChange={set('gender')} error={errors.gender} required options={[
                   { value: '', label: 'Select gender' },
                   { value: 'MALE', label: 'Male' },
@@ -218,8 +218,8 @@ const Register = () => {
             {step === 3 && (
               <StepSection title="Health Metrics" subtitle="Used to calculate your nutritional needs">
                 <div className="grid grid-cols-2 gap-4">
-                  <Input id="height" type="number" label="Height (cm)" placeholder="170" value={form.height} onChange={set('height')} error={errors.height} required />
-                  <Input id="weight" type="number" label="Weight (kg)" placeholder="65" value={form.weight} onChange={set('weight')} error={errors.weight} required />
+                  <Input id="height" type="number" label="Height (cm)" placeholder="e.g., 170" value={form.height} onChange={set('height')} error={errors.height} required />
+                  <Input id="weight" type="number" label="Weight (kg)" placeholder="e.g., 65" value={form.weight} onChange={set('weight')} error={errors.weight} required />
                 </div>
                 <SelectField id="activity_level" label="Activity Level" value={form.activity_level} onChange={set('activity_level')} error={errors.activity_level} required options={[
                   { value: '', label: 'Select activity level' },
@@ -233,9 +233,9 @@ const Register = () => {
                   <label className="text-sm font-medium text-gray-700 block mb-2">Goal <span className="text-red-500">*</span></label>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { v: 'LOSE_WEIGHT', l: '📉 Lose Weight' },
-                      { v: 'MAINTAIN_WEIGHT', l: '⚖️ Maintain' },
-                      { v: 'GAIN_WEIGHT', l: '📈 Gain Weight' },
+                      { v: 'LOSE_WEIGHT', l: ' Lose Weight' },
+                      { v: 'MAINTAIN_WEIGHT', l: ' Maintain Weight' },
+                      { v: 'GAIN_WEIGHT', l: ' Gain Weight' },
                     ].map(({ v, l }) => (
                       <label key={v} className={`cursor-pointer border rounded-xl px-3 py-3 text-center text-sm font-medium transition-all ${form.goal === v ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-gray-200 text-gray-600 hover:border-emerald-300'}`}>
                         <input type="radio" name="goal" value={v} checked={form.goal === v} onChange={set('goal')} className="sr-only" />
@@ -254,9 +254,9 @@ const Register = () => {
                   <label className="text-sm font-medium text-gray-700 block mb-2">Dietary Preference <span className="text-red-500">*</span></label>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { v: 'VEGETARIAN', l: '🌿 Vegetarian' },
-                      { v: 'NON_VEGETARIAN', l: '🍗 Non-Veg' },
-                      { v: 'MIXED', l: '🍱 Mixed' },
+                      { v: 'VEGETARIAN', l: ' Vegetarian' },
+                      { v: 'NON_VEGETARIAN', l: ' Non-Veg' },
+                      { v: 'MIXED', l: ' Mixed' },
                     ].map(({ v, l }) => (
                       <label key={v} className={`cursor-pointer border rounded-xl px-3 py-3 text-center text-sm font-medium transition-all ${form.dietary_preference === v ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-gray-200 text-gray-600 hover:border-emerald-300'}`}>
                         <input type="radio" name="dietary_preference" value={v} checked={form.dietary_preference === v} onChange={set('dietary_preference')} className="sr-only" />
