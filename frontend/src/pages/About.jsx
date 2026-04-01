@@ -23,7 +23,7 @@ const About = () => {
           </div>
           <h1 className="text-5xl font-extrabold text-white mb-4">About NutriFit</h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">
-            A Final Year Project at the intersection of artificial intelligence, 
+            An innovative platform at the intersection of artificial intelligence, 
             nutrition science, and cultural authenticity.
           </p>
         </div>
@@ -144,8 +144,8 @@ const About = () => {
         <section className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-extrabold mb-2">The Developer</h2>
           <p className="text-gray-300 mb-6">
-            NutriFit was designed and built as a Final Year Project for the 
-            Bachelor of Information Technology (BIT) program.
+            NutriFit is a vision-driven application built to bridge the gap between 
+            modern AI technology and traditional Nepali diets.
           </p>
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-2xl font-bold">
@@ -153,7 +153,7 @@ const About = () => {
             </div>
             <div>
               <p className="font-bold text-lg">Paban Bhandari</p>
-              <p className="text-emerald-300 text-sm">BIT Student · Full Stack Developer</p>
+              <p className="text-emerald-300 text-sm">BIT Student · Texas College of Management and IT</p>
               <p className="text-gray-400 text-sm mt-1">Django · React · Machine Learning · PostgreSQL</p>
             </div>
           </div>

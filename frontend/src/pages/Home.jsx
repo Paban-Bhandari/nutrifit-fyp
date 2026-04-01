@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import {
   Brain, UtensilsCrossed, Wallet, HeartPulse,
-  ArrowRight, ChevronDown, Star,
+  ArrowRight, ChevronDown,
   UserPlus, Cpu, CalendarCheck
 } from 'lucide-react';
 import Layout from '../components/layout/Layout';
@@ -61,13 +61,6 @@ const steps = [
   },
 ];
 
-// ── Stats ────────────────────────────────────────────────────────────────────
-const stats = [
-  { value: '250+', label: 'Nepali Foods', sub: 'in our database' },
-  { value: '94%', label: 'Accuracy', sub: 'avg nutritional match' },
-  { value: '5', label: 'User Clusters', sub: 'AI-grouped profiles' },
-  { value: '3', label: 'Meals / Day', sub: 'personalised daily' },
-];
 
 // ═══════════════════════════════════════════════════════════════════════════════
 const Home = () => {
@@ -80,37 +73,40 @@ const Home = () => {
   return (
     <Layout>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="gradient-hero min-h-[90vh] flex items-center relative overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="bg-emerald-50 min-h-[90vh] flex items-center relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-200/50 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-emerald-300/30 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-yellow-200/40 rounded-full blur-[90px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm text-emerald-200 mb-8 animate-fade-in">
-              <Star size={14} className="fill-emerald-300 text-emerald-300" />
-              <span>Final Year Project · BIT Program · AI-Powered</span>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10 w-full flex flex-col lg:flex-row lg:items-start items-center justify-between gap-12">
+          {/* Left Text Content */}
+          <div className="max-w-2xl text-center lg:text-left">
+            {/* Welcome Text */}
+            <p className="text-emerald-700 font-black tracking-widest uppercase mb-4 animate-fade-in-up flex items-center justify-center lg:justify-start gap-2">
+              <span className="w-8 h-1 bg-emerald-500 rounded-full"></span>
+              Welcome to NutriFit
+            </p>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 animate-fade-in-up">
               Eat Smart,{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-emerald-100">
+              <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">
                 Live Better
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-xl animate-fade-in-up animation-delay-200">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
               AI-powered personalized Nepali diet plans. Get healthy, budget-friendly meals
               tailored to your body, goals, and lifestyle — powered by K-Means clustering.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-300">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up animation-delay-300">
               <Link
                 to={user ? '/dashboard' : '/register'}
                 id="hero-cta-primary"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-emerald-500/30 transition-all active:scale-95"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-emerald-600/30 transition-all active:scale-95 w-full sm:w-auto"
               >
                 {user ? 'Go to Dashboard' : 'Get Started — It\'s Free'}
                 <ArrowRight size={20} />
@@ -118,35 +114,67 @@ const Home = () => {
               <button
                 onClick={scrollToFeatures}
                 id="hero-learn-more"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white border border-emerald-100 text-emerald-800 font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-200 transition-colors w-full sm:w-auto"
               >
                 Learn More
                 <ChevronDown size={18} />
               </button>
             </div>
           </div>
+
+          {/* Right Visual Element (Abstract UI Mockup) */}
+          <div className="hidden lg:block relative w-full max-w-lg mb-12 lg:mb-0 animate-fade-in-up animation-delay-400">
+            <div className="relative w-full aspect-[3.75/3] rounded-[3rem] bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl shadow-2xl overflow-hidden border-8 border-white p-6 border-opacity-70 z-10 glass">
+
+              <div className="w-full h-full flex flex-col gap-4 opacity-90">
+                {/* Mock Header */}
+                <div className="w-full h-20 bg-white rounded-2xl shadow-sm animate-pulse-slow p-4 flex gap-4 items-center border border-emerald-50">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex-shrink-0"></div>
+                  <div className="flex-1 space-y-3">
+                    <div className="h-3 bg-emerald-100 rounded-full w-3/4"></div>
+                    <div className="h-2 bg-emerald-50 rounded-full w-1/2"></div>
+                  </div>
+                </div>
+                {/* Mock Chart/Stats */}
+                <div className="flex gap-4 h-24">
+                  <div className="flex-1 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl shadow-md p-4 flex flex-col justify-end">
+                    <div className="h-2 w-1/2 bg-white/40 rounded-full mb-2"></div>
+                    <div className="h-3 w-3/4 bg-white/80 rounded-full"></div>
+                  </div>
+                  <div className="w-20 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-2xl shadow-md"></div>
+                </div>
+                {/* Mock List */}
+                <div className="flex-1 bg-white rounded-2xl shadow-sm animate-pulse-slow border border-emerald-50 p-5 space-y-3">
+                  <div className="h-2 bg-gray-100 rounded-full w-full"></div>
+                  <div className="h-2 bg-gray-100 rounded-full w-5/6"></div>
+                  <div className="h-2 bg-gray-100 rounded-full w-4/6"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Badges */}
+            <div className="absolute top-8 -left-12 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-float z-20 border border-emerald-50">
+              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-black text-lg">250+</div>
+              <div>
+                <div className="text-sm font-bold text-gray-800 leading-tight">Nepali<br />Foods</div>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-8 right-8 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-float animation-delay-500 z-20 border border-emerald-50">
+              <div className="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center font-black text-sm">NPR</div>
+              <div>
+                <div className="text-sm font-bold text-gray-800 leading-tight">Budget<br />Friendly</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <ChevronDown size={24} className="text-white/40" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-float z-20">
+          <ChevronDown size={28} className="text-emerald-900/30" />
         </div>
       </section>
 
-      {/* ── Stats Strip ───────────────────────────────────────────────────── */}
-      <section className="bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map(({ value, label, sub }) => (
-              <div key={label} className="text-center">
-                <p className="text-3xl font-extrabold gradient-text">{value}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{label}</p>
-                <p className="text-xs text-gray-400">{sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Features ──────────────────────────────────────────────────────── */}
       <section ref={featuresRef} className="py-24 bg-gray-50">
