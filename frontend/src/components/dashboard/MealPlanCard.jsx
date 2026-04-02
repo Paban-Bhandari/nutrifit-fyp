@@ -2,7 +2,6 @@ import { getGiColor, getGiLabel, roundNum, formatCurrency } from '../../utils/he
 
 const mealConfig = {
   breakfast: {
-    emoji: '🌅',
     label: 'Breakfast',
     gradient: 'from-emerald-50/50 to-white',
     border: 'border-emerald-100',
@@ -10,7 +9,6 @@ const mealConfig = {
     dot: 'bg-emerald-400',
   },
   lunch: {
-    emoji: '🍛',
     label: 'Lunch',
     gradient: 'from-emerald-50/50 to-white',
     border: 'border-emerald-100',
@@ -18,7 +16,6 @@ const mealConfig = {
     dot: 'bg-emerald-400',
   },
   dinner: {
-    emoji: '🌙',
     label: 'Dinner',
     gradient: 'from-emerald-50/50 to-white',
     border: 'border-emerald-100',
@@ -34,9 +31,9 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
   const totals = foods.reduce(
     (acc, food) => ({
       calories: acc.calories + parseFloat(food.calories || 0),
-      protein:  acc.protein  + parseFloat(food.protein  || 0),
-      carbs:    acc.carbs    + parseFloat(food.carbohydrates || 0),
-      fat:      acc.fat      + parseFloat(food.fat      || 0),
+      protein: acc.protein + parseFloat(food.protein || 0),
+      carbs: acc.carbs + parseFloat(food.carbohydrates || 0),
+      fat: acc.fat + parseFloat(food.fat || 0),
     }),
     { calories: 0, protein: 0, carbs: 0, fat: 0 }
   );
@@ -45,8 +42,7 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
     <div className={`rounded-2xl border ${config.border} bg-gradient-to-br ${config.gradient} overflow-hidden`}>
       {/* Header */}
       <div className="px-5 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <span className="text-2xl">{config.emoji}</span>
+        <div className="flex items-center gap-3">
           <div>
             <h3 className="font-bold text-gray-800 text-base">{config.label}</h3>
             <p className="text-xs text-gray-500">{foods.length} items</p>
@@ -69,8 +65,8 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
         <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Subtotals</p>
         <div className="grid grid-cols-3 gap-2">
           <MacroChip label="Protein" value={`${roundNum(totals.protein)}g`} color="text-red-600" />
-          <MacroChip label="Carbs"   value={`${roundNum(totals.carbs)}g`}   color="text-amber-600" />
-          <MacroChip label="Fat"     value={`${roundNum(totals.fat)}g`}     color="text-blue-600" />
+          <MacroChip label="Carbs" value={`${roundNum(totals.carbs)}g`} color="text-amber-600" />
+          <MacroChip label="Fat" value={`${roundNum(totals.fat)}g`} color="text-blue-600" />
         </div>
       </div>
     </div>
@@ -93,7 +89,7 @@ const FoodRow = ({ food, dot }) => {
               <span className="text-xs px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-medium">Veg</span>
             )}
             {food.is_diabetes_friendly && (
-              <span className="text-xs px-1.5 py-0.5 rounded-md bg-blue-100 text-blue-700 font-medium">🩺 Diabetic</span>
+              <span className="text-xs px-1.5 py-0.5 rounded-md bg-blue-100 text-blue-700 font-medium">Diabetic</span>
             )}
           </div>
         </div>

@@ -9,17 +9,17 @@ import { getGiColor, getGiLabel, categoryColor, categoryLabel, formatCurrency } 
 const CATEGORIES = ['', 'MEAL', 'GRAIN', 'LEGUME', 'VEGETABLE', 'FRUIT', 'MEAT', 'DAIRY', 'SNACK', 'BEVERAGE', 'DESSERT'];
 
 const Foods = () => {
-  const [foods, setFoods]         = useState([]);
-  const [loading, setLoading]     = useState(true);
-  const [error, setError]         = useState('');
-  const [stats, setStats]         = useState(null);
+  const [foods, setFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [stats, setStats] = useState(null);
 
   // Filters
-  const [search, setSearch]           = useState('');
-  const [category, setCategory]       = useState('');
-  const [vegetarian, setVegetarian]   = useState('');
-  const [diabetic, setDiabetic]       = useState('');
-  const [maxPrice, setMaxPrice]       = useState('');
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const [vegetarian, setVegetarian] = useState('');
+  const [diabetic, setDiabetic] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
   const debounceRef = useRef(null);
@@ -29,11 +29,11 @@ const Foods = () => {
     setError('');
     try {
       const query = new URLSearchParams();
-      if (params.search)     query.set('search', params.search);
-      if (params.category)   query.set('category', params.category);
+      if (params.search) query.set('search', params.search);
+      if (params.category) query.set('category', params.category);
       if (params.vegetarian) query.set('vegetarian', params.vegetarian);
-      if (params.diabetic)   query.set('diabetes_friendly', params.diabetic);
-      if (params.maxPrice)   query.set('max_price', params.maxPrice);
+      if (params.diabetic) query.set('diabetes_friendly', params.diabetic);
+      if (params.maxPrice) query.set('max_price', params.maxPrice);
 
       const { data } = await api.get(`/api/foods/?${query}`);
       setFoods(data);
@@ -46,7 +46,7 @@ const Foods = () => {
 
   // Fetch stats once
   useEffect(() => {
-    api.get('/api/foods/stats/').then(({ data }) => setStats(data)).catch(() => {});
+    api.get('/api/foods/stats/').then(({ data }) => setStats(data)).catch(() => { });
   }, []);
 
   // Debounce search
@@ -104,9 +104,8 @@ const Foods = () => {
           <button
             id="toggle-filters-btn"
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-medium transition-all ${
-              showFilters ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-gray-600 border-gray-200 hover:border-emerald-300'
-            }`}
+            className={`flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-medium transition-all ${showFilters ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-gray-600 border-gray-200 hover:border-emerald-300'
+              }`}
           >
             <Filter size={15} />
             Filters {hasFilters && <span className="w-2 h-2 bg-amber-400 rounded-full" />}
@@ -243,13 +242,13 @@ const FoodCard = ({ food }) => {
             {getGiLabel(gi)} ({food.glycemic_index})
           </span>
           {food.is_vegetarian && (
-            <span className="text-xs px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-700 font-medium flex items-center gap-1">
-              <Leaf size={10} /> Veg
+            <span className="text-xs px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-700 font-medium">
+              Veg
             </span>
           )}
           {food.is_diabetes_friendly && (
-            <span className="text-xs px-2 py-0.5 rounded-lg bg-blue-100 text-blue-700 font-medium flex items-center gap-1">
-              <Droplets size={10} /> Diabetic
+            <span className="text-xs px-2 py-0.5 rounded-lg bg-blue-100 text-blue-700 font-medium">
+              Diabetic
             </span>
           )}
         </div>
