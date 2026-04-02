@@ -11,6 +11,7 @@ const Login     = lazy(() => import('./pages/Login'));
 const Register  = lazy(() => import('./pages/Register'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Foods     = lazy(() => import('./pages/Foods'));
+const Profile   = lazy(() => import('./pages/Profile'));
 
 // ── Protected Route ──────────────────────────────────────────────────────────
 const ProtectedRoute = ({ children }) => {
@@ -43,6 +44,9 @@ const AppRoutes = () => (
 
       <Route path="/dashboard" element={
         <ProtectedRoute><Dashboard /></ProtectedRoute>
+      } />
+      <Route path="/profile" element={
+        <ProtectedRoute><Profile /></ProtectedRoute>
       } />
 
       {/* Catch-all → Home */}

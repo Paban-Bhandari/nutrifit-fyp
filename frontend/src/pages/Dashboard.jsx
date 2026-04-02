@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Navigate } from 'react-router-dom';
-import { RefreshCw, Sparkles, ChevronRight } from 'lucide-react';
+import { Navigate, Link } from 'react-router-dom';
+import { RefreshCw, Sparkles, ChevronRight, UtensilsCrossed } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
 import Layout from '../components/layout/Layout';
@@ -67,19 +67,21 @@ const Dashboard = () => {
               {timeOfDay()}, <span className="gradient-text">{firstName}!</span>
             </h1>
             <p className="text-gray-500 mt-1 text-sm">
-              Here's your personalized nutrition dashboard for today.
+              Here's your personalized nutrition dashboard.
             </p>
           </div>
-          <Button
-            onClick={generatePlan}
-            loading={planLoading}
-            size="lg"
-            id="generate-meal-plan-btn"
-            className="shrink-0"
-          >
-            <RefreshCw size={16} className={planLoading ? 'animate-spin' : ''} />
-            {generated ? 'Regenerate Plan' : 'Generate Meal Plan'}
-          </Button>
+          {!generated && (
+            <Button
+              onClick={generatePlan}
+              loading={planLoading}
+              size="lg"
+              id="generate-meal-plan-btn"
+              className="shrink-0"
+            >
+              <RefreshCw size={16} className={planLoading ? 'animate-spin' : ''} />
+              Generate Meal Plan
+            </Button>
+          )}
         </div>
 
         {/* ── Stats Cards ────────────────────────────────────────────────── */}
@@ -94,9 +96,9 @@ const Dashboard = () => {
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-gray-800">Your Profile</h2>
-              <a href="/profile" className="text-xs text-emerald-600 hover:underline flex items-center gap-1">
+              <Link to="/profile" className="text-xs text-emerald-600 hover:underline flex items-center gap-1">
                 Edit <ChevronRight size={12} />
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
               <ProfileChip label="Activity"  value={activityLevelLabel(profile.activity_level)} />
@@ -123,19 +125,31 @@ const Dashboard = () => {
 
         {mealPlan && (
           <>
-            {/* Accuracy Badge */}
-            <div className="flex items-center gap-3">
-              <Sparkles size={18} className="text-emerald-500" />
-              <h2 className="text-xl font-extrabold text-gray-900">Today's Meal Plan</h2>
-              <span className={`text-sm font-bold px-3 py-1 rounded-full ${
-                mealPlan.nutritional_accuracy >= 90
-                  ? 'bg-emerald-100 text-emerald-700'
-                  : mealPlan.nutritional_accuracy >= 70
-                  ? 'bg-amber-100 text-amber-700'
-                  : 'bg-red-100 text-red-700'
-              }`}>
-                {Math.round(mealPlan.nutritional_accuracy)}% accuracy
-              </span>
+            {/* Accuracy Badge and Regenerate Button */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Sparkles size={18} className="text-emerald-500" />
+                <h2 className="text-xl font-extrabold text-gray-900">Today's Meal Plan</h2>
+                <span className={`text-sm font-bold px-3 py-1 rounded-full ${
+                  mealPlan.nutritional_accuracy >= 90
+                    ? 'bg-emerald-100 text-emerald-700'
+                    : mealPlan.nutritional_accuracy >= 70
+                    ? 'bg-amber-100 text-amber-700'
+                    : 'bg-red-100 text-red-700'
+                }`}>
+                  {Math.round(mealPlan.nutritional_accuracy)}% accuracy
+                </span>
+              </div>
+              <Button
+                onClick={generatePlan}
+                loading={planLoading}
+                size="sm"
+                id="regenerate-meal-plan-btn"
+                className="shrink-0"
+              >
+                <RefreshCw size={16} className={planLoading ? 'animate-spin' : ''} />
+                Regenerate Plan
+              </Button>
             </div>
 
             {/* Meal cards */}
@@ -153,7 +167,7 @@ const Dashboard = () => {
 
             {/* Daily Totals Summary */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-              <h3 className="font-bold text-gray-800 mb-4">📊 Daily Totals</h3>
+              <h3 className="font-bold text-gray-800 mb-4"> Daily Totals</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <TotalChip label="Calories" value={`${Math.round(mealPlan.total_calories)} kcal`} color="text-amber-600" bg="bg-amber-50" />
                 <TotalChip label="Protein"  value={`${parseFloat(mealPlan.total_protein).toFixed(1)}g`}  color="text-red-600"     bg="bg-red-50" />
@@ -167,7 +181,11 @@ const Dashboard = () => {
         {/* ── Empty State ────────────────────────────────────────────────── */}
         {!planLoading && !mealPlan && !planError && (
           <div className="text-center py-20">
-            <div className="text-5xl mb-4">🍽️</div>
+          <div className="flex justify-center mb-4">
+            <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center">
+              <UtensilsCrossed size={40} className="stroke-[1.5]" />
+            </div>
+          </div>
             <h3 className="text-xl font-bold text-gray-700 mb-2">No meal plan yet</h3>
             <p className="text-gray-400 mb-6">Click "Generate Meal Plan" to get your personalized daily plan.</p>
             <Button onClick={generatePlan} loading={planLoading} id="empty-state-generate-btn">

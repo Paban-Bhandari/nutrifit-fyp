@@ -99,7 +99,7 @@ const Home = () => {
 
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
               AI-powered personalized Nepali diet plans. Get healthy, budget-friendly meals
-              tailored to your body, goals, and lifestyle — powered by K-Means clustering.
+              tailored to your body, goals, and lifestyle.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up animation-delay-300">
