@@ -90,6 +90,7 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
     """API endpoint to get and update user profile"""
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [CsrfExemptSessionAuthentication]
     
     def get_object(self):
         return UserProfile.objects.get(user=self.request.user)
