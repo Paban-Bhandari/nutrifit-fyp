@@ -73,10 +73,10 @@ const Home = () => {
   return (
     <Layout>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="bg-emerald-50 min-h-[90vh] flex items-center relative overflow-hidden">
+      <section className="bg-gradient-to-br from-emerald-200 via-emerald-100 to-emerald-50 min-h-[90vh] flex items-center relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-200/50 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-emerald-300/30 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-400/40 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-emerald-500/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-yellow-200/40 rounded-full blur-[90px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10 w-full flex flex-col lg:flex-row lg:items-start items-center justify-between gap-12">
