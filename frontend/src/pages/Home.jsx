@@ -83,13 +83,13 @@ const Home = () => {
           {/* Left Text Content */}
           <div className="max-w-2xl text-center lg:text-left">
             {/* Welcome Text */}
-            <p className="text-emerald-700 font-black tracking-widest uppercase mb-4 animate-fade-in-up flex items-center justify-center lg:justify-start gap-2">
+            <p className="text-emerald-700 font-black tracking-widest uppercase mb-4 flex items-center justify-center lg:justify-start gap-2">
               <span className="w-8 h-1 bg-emerald-500 rounded-full"></span>
               Welcome to NutriFit
             </p>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 animate-fade-in-up">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6">
               Eat Smart,{' '}
               <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">
@@ -97,12 +97,12 @@ const Home = () => {
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
               AI-powered personalized Nepali diet plans. Get healthy, budget-friendly meals
               tailored to your body, goals, and lifestyle.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up animation-delay-300">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 to={user ? '/dashboard' : '/register'}
                 id="hero-cta-primary"
@@ -123,7 +123,7 @@ const Home = () => {
           </div>
 
           {/* Right Visual Element (Abstract UI Mockup) */}
-          <div className="hidden lg:block relative w-full max-w-lg mb-12 lg:mb-0 animate-fade-in-up animation-delay-400">
+          <div className="hidden lg:block relative w-full max-w-lg mb-12 lg:mb-0">
             <div className="relative w-full aspect-[3.75/3] rounded-[3rem] bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl shadow-2xl overflow-hidden border-8 border-white p-6 border-opacity-70 z-10 glass">
 
               <div className="w-full h-full flex flex-col gap-4 opacity-90">
@@ -198,8 +198,7 @@ const Home = () => {
             {features.map(({ icon: Icon, color, title, desc }, i) => (
               <div
                 key={title}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
-                style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both', opacity: 0 }}
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
                 <div className={`w-12 h-12 rounded-xl ${color} flex items-center justify-center mb-4`}>
                   <Icon size={22} />
