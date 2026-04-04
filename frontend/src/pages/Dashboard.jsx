@@ -103,7 +103,7 @@ const Dashboard = () => {
                 id="generate-meal-plan-btn"
                 className="shrink-0"
               >
-                <RefreshCw size={16} className={planLoading ? 'animate-spin' : ''} />
+                {!planLoading && <RefreshCw size={16} />}
                 Generate
               </Button>
             )}
@@ -176,28 +176,25 @@ const Dashboard = () => {
             {/* Accuracy Badge and Regenerate Button */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <Sparkles size={18} className="text-emerald-500" />
                 <h2 className="text-xl font-extrabold text-gray-900">Today's Meal Plan</h2>
                 <span className={`text-sm font-bold px-3 py-1 rounded-full ${mealPlan.nutritional_accuracy >= 90
-                    ? 'bg-emerald-100 text-emerald-700'
-                    : mealPlan.nutritional_accuracy >= 70
-                      ? 'bg-amber-100 text-amber-700'
-                      : 'bg-red-100 text-red-700'
+                  ? 'bg-emerald-100 text-emerald-700'
+                  : mealPlan.nutritional_accuracy >= 70
+                    ? 'bg-amber-100 text-amber-700'
+                    : 'bg-red-100 text-red-700'
                   }`}>
                   {Math.round(mealPlan.nutritional_accuracy)}% accuracy
                 </span>
               </div>
-              <Button
-                onClick={generatePlan}
-                loading={planLoading}
-                size="sm"
-                id="regenerate-meal-plan-btn"
-                className="shrink-0"
-              >
-                <RefreshCw size={16} className={planLoading ? 'animate-spin' : ''} />
-                Regenerate Plan
-              </Button>
             </div>
+
+            {/* Calorie Progress Bar */}
+            <CalorieProgressBar
+              mealPlan={mealPlan}
+              profile={profile}
+              onRegenerate={generatePlan}
+              loading={planLoading}
+            />
 
             {/* Meal cards */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -206,20 +203,24 @@ const Dashboard = () => {
               <MealPlanCard mealType="dinner" foods={mealPlan.dinner} />
             </div>
 
-            {/* Charts Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CalorieProgressBar mealPlan={mealPlan} profile={profile} />
-              <MacroPieChart mealPlan={mealPlan} />
-            </div>
+            {/* Combined Nutrition Insights: Macro Distribution (Left) & Daily Totals (Right) */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                {/* Macro Distribution */}
+                <MacroPieChart mealPlan={mealPlan} noCard={true} />
 
-            {/* Daily Totals Summary */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-              <h3 className="font-bold text-gray-800 mb-4"> Daily Totals</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <TotalChip label="Calories" value={`${Math.round(mealPlan.total_calories)} kcal`} color="text-amber-600" bg="bg-amber-50" />
-                <TotalChip label="Protein" value={`${parseFloat(mealPlan.total_protein).toFixed(1)}g`} color="text-red-600" bg="bg-red-50" />
-                <TotalChip label="Carbs" value={`${parseFloat(mealPlan.total_carbs).toFixed(1)}g`} color="text-orange-600" bg="bg-orange-50" />
-                <TotalChip label="Fat" value={`${parseFloat(mealPlan.total_fats).toFixed(1)}g`} color="text-blue-600" bg="bg-blue-50" />
+                {/* Daily Totals Summary */}
+                <div className="h-full flex flex-col">
+                  <h3 className="font-bold text-gray-800 text-base mb-1">Daily Totals</h3>
+                  <p className="text-xs text-gray-400 mb-6">Aggregate nutritional summary</p>
+                  
+                  <div className="grid grid-cols-2 gap-4 flex-grow">
+                    <TotalChip label="Calories" value={`${Math.round(mealPlan.total_calories)} kcal`} color="text-amber-600" bg="bg-amber-50" />
+                    <TotalChip label="Protein" value={`${parseFloat(mealPlan.total_protein).toFixed(1)}g`} color="text-red-600" bg="bg-red-50" />
+                    <TotalChip label="Carbs" value={`${parseFloat(mealPlan.total_carbs).toFixed(1)}g`} color="text-orange-600" bg="bg-orange-50" />
+                    <TotalChip label="Fat" value={`${parseFloat(mealPlan.total_fats).toFixed(1)}g`} color="text-blue-600" bg="bg-blue-50" />
+                  </div>
+                </div>
               </div>
             </div>
           </>
@@ -236,7 +237,7 @@ const Dashboard = () => {
             <h3 className="text-xl font-bold text-gray-700 mb-2">No meal plan yet</h3>
             <p className="text-gray-400 mb-6">Click "Generate Meal Plan" to get your personalized daily plan.</p>
             <Button onClick={generatePlan} loading={planLoading} id="empty-state-generate-btn">
-              <Sparkles size={16} /> Generate My Plan
+              {!planLoading && <Sparkles size={16} />} Generate My Plan
             </Button>
           </div>
         )}

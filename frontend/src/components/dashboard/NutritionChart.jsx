@@ -1,12 +1,14 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { RefreshCw } from 'lucide-react';
+import Button from '../../components/common/Button';
 import { roundNum, caloriePercent } from '../../utils/helpers';
 
 // ── Macro Pie Chart ──────────────────────────────────────────────────────────
 
 const MACRO_COLORS = {
   Protein: '#ef4444',
-  Carbs:   '#f59e0b',
-  Fat:     '#3b82f6',
+  Carbs: '#f59e0b',
+  Fat: '#3b82f6',
 };
 
 const CustomTooltip = ({ active, payload }) => {
@@ -23,31 +25,31 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const CustomLegend = ({ data }) => (
-  <div className="flex items-center justify-center gap-5 mt-2">
-    {data.map(({ name, value, color }) => (
+  <div className="flex items-center justify-center gap-5 mt-4">
+    {data.map(({ name, color }) => (
       <div key={name} className="flex items-center gap-1.5">
         <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: color }} />
-        <span className="text-xs text-gray-600 font-medium">{name}: <strong>{value}g</strong></span>
+        <span className="text-xs text-gray-600 font-bold uppercase tracking-wider">{name}</span>
       </div>
     ))}
   </div>
 );
 
-export const MacroPieChart = ({ mealPlan }) => {
+export const MacroPieChart = ({ mealPlan, noCard = false }) => {
   const protein = roundNum(mealPlan?.total_protein || 0);
-  const carbs   = roundNum(mealPlan?.total_carbs   || 0);
-  const fat     = roundNum(mealPlan?.total_fats    || 0);
+  const carbs = roundNum(mealPlan?.total_carbs || 0);
+  const fat = roundNum(mealPlan?.total_fats || 0);
 
   const data = [
     { name: 'Protein', value: protein, color: MACRO_COLORS.Protein },
-    { name: 'Carbs',   value: carbs,   color: MACRO_COLORS.Carbs },
-    { name: 'Fat',     value: fat,     color: MACRO_COLORS.Fat },
+    { name: 'Carbs', value: carbs, color: MACRO_COLORS.Carbs },
+    { name: 'Fat', value: fat, color: MACRO_COLORS.Fat },
   ];
 
   const total = protein + carbs + fat;
 
-  return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+  const content = (
+    <>
       <h3 className="font-bold text-gray-800 text-base mb-1">Macros Distribution</h3>
       <p className="text-xs text-gray-400 mb-4">Protein · Carbohydrates · Fat</p>
 
@@ -73,41 +75,35 @@ export const MacroPieChart = ({ mealPlan }) => {
       </div>
 
       <CustomLegend data={data} />
+    </>
+  );
 
-      {/* Macro percentage breakdown */}
-      <div className="grid grid-cols-3 gap-3 mt-4">
-        {data.map(({ name, value, color }) => {
-          const pct = total > 0 ? Math.round((value / total) * 100) : 0;
-          return (
-            <div key={name} className="text-center p-2 rounded-xl bg-gray-50">
-              <p className="text-base font-bold" style={{ color }}>{value}g</p>
-              <p className="text-xs text-gray-500 mt-0.5">{name}</p>
-              <p className="text-xs font-medium text-gray-400">{pct}%</p>
-            </div>
-          );
-        })}
-      </div>
+  if (noCard) return <div>{content}</div>;
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+      {content}
     </div>
   );
 };
 
 // ── Calorie Progress Bar ─────────────────────────────────────────────────────
 
-export const CalorieProgressBar = ({ mealPlan, profile }) => {
-  const actual   = Math.round(mealPlan?.total_calories || 0);
-  const target   = profile?.daily_calories || 1;
-  const pct      = caloriePercent(actual, target);
+export const CalorieProgressBar = ({ mealPlan, profile, onRegenerate, loading }) => {
+  const actual = Math.round(mealPlan?.total_calories || 0);
+  const target = profile?.daily_calories || 1;
+  const pct = caloriePercent(actual, target);
   const accuracy = mealPlan?.nutritional_accuracy
     ? Math.round(mealPlan.nutritional_accuracy)
     : pct;
 
   const barColor =
     accuracy >= 90 ? '#10b981' :
-    accuracy >= 70 ? '#f59e0b' : '#ef4444';
+      accuracy >= 70 ? '#f59e0b' : '#ef4444';
 
   const badgeColor =
     accuracy >= 90 ? 'bg-emerald-100 text-emerald-700' :
-    accuracy >= 70 ? 'bg-amber-100 text-amber-700' : 'bg-red-100 text-red-700';
+      accuracy >= 70 ? 'bg-amber-100 text-amber-700' : 'bg-red-100 text-red-700';
 
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
@@ -116,9 +112,17 @@ export const CalorieProgressBar = ({ mealPlan, profile }) => {
           <h3 className="font-bold text-gray-800 text-base">Daily Calories</h3>
           <p className="text-xs text-gray-400">Today's plan vs target</p>
         </div>
-        <span className={`text-sm font-bold px-3 py-1 rounded-full ${badgeColor}`}>
-          {accuracy}% accuracy
-        </span>
+        <Button
+          onClick={onRegenerate}
+          loading={loading}
+          size="sm"
+          variant="outline"
+          id="regenerate-meal-plan-btn"
+          className="shrink-0"
+        >
+          {!loading && <RefreshCw size={14} />}
+          Regenerate
+        </Button>
       </div>
 
       <div className="flex items-end gap-2 mb-3">

@@ -1,4 +1,4 @@
-import { getGiColor, getGiLabel, roundNum, formatCurrency } from '../../utils/helpers';
+import { roundNum } from '../../utils/helpers';
 
 const mealConfig = {
   breakfast: {
@@ -39,7 +39,7 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
   );
 
   return (
-    <div className={`rounded-2xl border ${config.border} bg-gradient-to-br ${config.gradient} overflow-hidden`}>
+    <div className={`rounded-2xl border ${config.border} bg-gradient-to-br ${config.gradient} overflow-hidden h-full flex flex-col`}>
       {/* Header */}
       <div className="px-5 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -54,15 +54,15 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
       </div>
 
       {/* Food Items */}
-      <div className="px-5 pb-4 space-y-2">
+      <div className="px-5 pb-4 space-y-2 flex-grow">
         {foods.map((food, idx) => (
           <FoodRow key={food.id || idx} food={food} dot={config.dot} />
         ))}
       </div>
 
       {/* Macros Subtotal */}
-      <div className="mx-5 mb-4 px-4 py-3 bg-white/70 rounded-xl border border-white/80">
-        <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Subtotals</p>
+      <div className="mx-5 mb-4 mt-auto px-4 py-3 bg-white/70 rounded-xl border border-white/80">
+        <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide text-center">Subtotals</p>
         <div className="grid grid-cols-3 gap-2">
           <MacroChip label="Protein" value={`${roundNum(totals.protein)}g`} color="text-red-600" />
           <MacroChip label="Carbs" value={`${roundNum(totals.carbs)}g`} color="text-amber-600" />
@@ -74,29 +74,16 @@ const MealPlanCard = ({ mealType, foods = [] }) => {
 };
 
 const FoodRow = ({ food, dot }) => {
-  const gi = food.gi_category || 'LOW';
   return (
-    <div className="flex items-center justify-between py-1.5">
+    <div className="flex items-center justify-between py-1.5 border-b border-gray-50 last:border-0">
       <div className="flex items-center gap-2.5 min-w-0">
         <span className={`w-2 h-2 rounded-full flex-shrink-0 ${dot}`} />
         <div className="min-w-0">
           <p className="text-sm font-medium text-gray-800 truncate">{food.food_name}</p>
-          <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
-            <span className={`text-xs px-1.5 py-0.5 rounded-md font-medium ${getGiColor(gi)}`}>
-              {getGiLabel(gi)}
-            </span>
-            {food.is_vegetarian && (
-              <span className="text-xs px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-medium">Veg</span>
-            )}
-            {food.is_diabetes_friendly && (
-              <span className="text-xs px-1.5 py-0.5 rounded-md bg-blue-100 text-blue-700 font-medium">Diabetic</span>
-            )}
-          </div>
         </div>
       </div>
       <div className="text-right flex-shrink-0 ml-3">
         <p className="text-sm font-bold text-gray-700">{Math.round(parseFloat(food.calories || 0))} kcal</p>
-        <p className="text-xs text-gray-400">{formatCurrency(food.average_price)}</p>
       </div>
     </div>
   );
@@ -105,7 +92,7 @@ const FoodRow = ({ food, dot }) => {
 const MacroChip = ({ label, value, color }) => (
   <div className="text-center">
     <p className={`text-sm font-bold ${color}`}>{value}</p>
-    <p className="text-xs text-gray-400">{label}</p>
+    <p className="text-xs text-gray-400 font-medium">{label}</p>
   </div>
 );
 
