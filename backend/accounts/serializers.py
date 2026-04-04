@@ -20,6 +20,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'bmi', 'bmi_category', 'activity_level', 'dietary_preference',
             'diabetes_status', 'goal', 'daily_budget',
             'daily_calories', 'daily_protein', 'daily_carbs', 'daily_fats',
+            'cluster_id', 'cluster_name',
             'created_at', 'updated_at'
         ]
         read_only_fields = [

@@ -98,6 +98,15 @@ class UserClustering:
         # Save model
         self.save_model()
         
+        # Update database for all users with their new cluster assignments
+        print("Updating user profiles in database...")
+        for _, row in df.iterrows():
+            UserProfile.objects.filter(id=row['user_id']).update(
+                cluster_id=int(row['cluster']),
+                cluster_name=row['cluster_name']
+            )
+        print(f"✓ Updated {len(df)} user profiles")
+        
         return df
     
     def predict_cluster(self, user_profile):
