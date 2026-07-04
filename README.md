@@ -186,6 +186,9 @@ Start the Vite development server:
 ```bash
 npm run dev
 ```
+
+> The frontend is configured to proxy `/api` calls to `http://localhost:8000`, so you should not need to change the API base URL for local development unless your backend runs on a different host or port.
+
 *The React application will be running at `http://localhost:5173`. (Ensure the Django backend is still running concurrently in the other terminal object).*
 
 ---

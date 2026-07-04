@@ -110,7 +110,7 @@ const Profile = () => {
         ...(form.daily_budget ? { daily_budget: parseFloat(form.daily_budget) } : { daily_budget: null }),
       };
 
-      await api.patch('/api/accounts/profile/', payload);
+      await api.patch('/accounts/profile/', payload);
       await refreshProfile();
       setSuccess('Profile updated successfully!');
       setTimeout(() => navigate('/dashboard'), 1500);

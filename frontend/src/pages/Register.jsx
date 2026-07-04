@@ -113,7 +113,7 @@ const Register = () => {
         diabetes_status:    form.diabetes_status,
         ...(form.daily_budget ? { daily_budget: parseFloat(form.daily_budget) } : {}),
       };
-      await api.post('/api/accounts/register/', payload);
+      await api.post('/accounts/register/', payload);
       setSuccess(true);
       setTimeout(() => navigate('/login'), 2500);
     } catch (err) {

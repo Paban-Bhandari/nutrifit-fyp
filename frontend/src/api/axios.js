@@ -6,7 +6,7 @@ import axios from 'axios';
  * withCredentials ensures session cookies are sent with every request.
  */
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true, // Required for Django session auth
   xsrfCookieName: 'csrftoken',

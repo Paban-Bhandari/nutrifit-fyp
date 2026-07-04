@@ -46,7 +46,7 @@ const Foods = () => {
 
   // Fetch stats once
   useEffect(() => {
-    api.get('/api/foods/stats/').then(({ data }) => setStats(data)).catch(() => { });
+    api.get('/foods/stats/').then(({ data }) => setStats(data)).catch(() => { });
   }, []);
 
   // Debounce search

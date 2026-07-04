@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const { data } = await api.get('/api/accounts/me/');
+        const { data } = await api.get('/accounts/me/');
         setUser(data.user);
         setProfile(data.profile);
       } catch {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
   // ── Login ────────────────────────────────────────────────────────────────────
   const login = useCallback(async (username, password) => {
-    const { data } = await api.post('/api/accounts/login/', { username, password });
+    const { data } = await api.post('/accounts/login/', { username, password });
     setUser(data.user);
     setProfile(data.profile);
     return data;
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   // ── Logout ───────────────────────────────────────────────────────────────────
   const logout = useCallback(async () => {
     try {
-      await api.post('/api/accounts/logout/');
+      await api.post('/accounts/logout/');
     } catch {
       // Even if logout fails server-side, clear client state
     } finally {
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   // ── Refresh profile from server ──────────────────────────────────────────────
   const refreshProfile = useCallback(async () => {
     try {
-      const { data } = await api.get('/api/accounts/me/');
+      const { data } = await api.get('/accounts/me/');
       setUser(data.user);
       setProfile(data.profile);
       return data;

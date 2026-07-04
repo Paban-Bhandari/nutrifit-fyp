@@ -16,7 +16,7 @@ const Dashboard = () => {
   const { user, profile, loading: authLoading } = useAuth();
 
   const [mealPlan, setMealPlan] = useState(null);
-  const [planLoading, setPlanLoading] = useState(true);
+  const [planLoading, setPlanLoading] = useState(false);
   const [planError, setPlanError] = useState('');
   const [generated, setGenerated] = useState(false);
 
@@ -28,9 +28,10 @@ const Dashboard = () => {
     setPlanLoading(true);
     setPlanError('');
     try {
-      const { data } = await api.get('/api/recommendations/daily-plan/');
+      const { data } = await api.get('/recommendations/daily-plan/');
       setMealPlan(data);
       setGenerated(true);
+      localStorage.setItem('nutrifit_meal_plan', JSON.stringify(data));
     } catch (err) {
       const msg =
         err?.response?.data?.detail ||
@@ -42,10 +43,16 @@ const Dashboard = () => {
     }
   }, []);
 
-  // Auto-generate on first visit
   useEffect(() => {
-    if (!generated) generatePlan();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const savedPlan = localStorage.getItem('nutrifit_meal_plan');
+    if (savedPlan) {
+      try {
+        setMealPlan(JSON.parse(savedPlan));
+        setGenerated(true);
+      } catch {
+        localStorage.removeItem('nutrifit_meal_plan');
+      }
+    }
   }, []);
 
   const firstName = user?.first_name || user?.username || 'there';
