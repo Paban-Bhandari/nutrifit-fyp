@@ -39,9 +39,18 @@ The system addresses the gap in global fitness apps which often lack culturally 
 
 ### Backend & AI Architecture
 * **Framework:** Django (Python), Django REST Framework
-* **Database:** PostgreSQL (Production) / SQLite (Development)
+* **Database:** PostgreSQL
 * **Machine Learning:** Scikit-Learn (K-Means, Cosine Similarity)
 * **Data Processing:** Pandas, NumPy
+
+---
+
+## Tested With
+
+- Python 3.12
+- Node.js 22
+- PostgreSQL 16
+- Google Chrome
 
 ---
 
@@ -51,6 +60,7 @@ The system addresses the gap in global fitness apps which often lack culturally 
 Make sure you have the following installed to run this project seamlessly:
 - **Node.js** (v18.0 or higher)
 - **Python** (v3.10 or higher)
+- **PostgreSQL 14+** (or compatible)
 
 ### 1. Backend Setup
 
@@ -72,7 +82,49 @@ venv\Scripts\activate
 
 Install the required Python dependencies:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+```
+
+> Important: this project uses PostgreSQL by default. If PostgreSQL is not installed or running, Django will fail during migrations with a connection error.
+
+#### PostgreSQL Setup (Windows)
+
+1. Download PostgreSQL from:
+   https://www.postgresql.org/download/windows/
+
+2. Install PostgreSQL using the default installation settings.
+
+3. During installation:
+   - Keep the default port: 5432
+   - Remember the password you assign to the "postgres" user.
+
+4. Open SQL Shell (psql) or pgAdmin and execute:
+
+```sql
+CREATE USER nutrifit_user WITH PASSWORD 'nutrifit123';
+CREATE DATABASE nutrifit_db OWNER nutrifit_user;
+GRANT ALL PRIVILEGES ON DATABASE nutrifit_db TO nutrifit_user;
+```
+
+#### PostgreSQL setup (Ubuntu/Debian)
+```bash
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+```
+
+Create the database and user used by the project:
+```bash
+sudo -u postgres psql
+```
+
+Inside the PostgreSQL shell, run:
+```sql
+CREATE USER nutrifit_user WITH PASSWORD 'nutrifit123';
+CREATE DATABASE nutrifit_db OWNER nutrifit_user;
+GRANT ALL PRIVILEGES ON DATABASE nutrifit_db TO nutrifit_user;
+\q
 ```
 
 Run database migrations to initialize the schema:
@@ -85,6 +137,38 @@ Start the Django development server:
 python manage.py runserver
 ```
 *The backend API will now be running at `http://localhost:8000`*
+
+### Import the Food Dataset
+
+The dataset file (Nepali_Food_Data.csv.csv) is already included in the backend folder. Import it once after running the migrations.
+
+After starting the backend for the first time, import the Nepali food dataset.
+
+Open the Django shell:
+```bash
+python manage.py shell
+```
+
+Run:
+```python
+from foods.import_foods import import_foods
+
+import_foods(
+    "Nepali_Food_Data.csv.csv",
+    replace_existing=True
+)
+```
+
+Expected output:
+```text
+Successfully imported: 194
+Errors: 0
+Total in database: 194
+```
+
+> **Note:** Without importing the dataset, the Food page and recommendation system will not work because the database will be empty.
+
+If you use different PostgreSQL credentials, update the database settings in [backend/nutrifit_backend/settings.py](backend/nutrifit_backend/settings.py).
 
 ### 2. Frontend Setup
 
@@ -121,6 +205,27 @@ NutriFit's backend features a robust recommendation engine utilizing a hybrid Ma
 
 ---
 
+## Project Structure
+
+```text
+nutrifit-fyp/
+├── backend/
+│   ├── accounts/
+│   ├── foods/
+│   ├── recommendations/
+│   ├── nutrifit_backend/
+│   ├── manage.py
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
+```
+
+---
+
 ## 🗄️ Database Schema
 
 The core structure relies on a relational model interconnecting three primary entities:
@@ -130,6 +235,75 @@ The core structure relies on a relational model interconnecting three primary en
 3. **MealPlan:** A relational mapping linking a `UserProfile` to various `Food` items divided into specific times of the day (Breakfast, Lunch, Dinner). It continuously updates to calculate aggregate nutritional fulfillment percentages, allowing the system to verify the accuracy of the generated recommendation against user goals.
 
 ---
+
+## 🧪 Running the Project
+
+1. Start the Django backend server.
+2. Start the React frontend server.
+3. Open http://localhost:5173 in your web browser.
+4. Register a new account.
+5. Log in.
+6. Complete your profile.
+7. Browse the Food Database.
+8. Generate your personalized meal recommendations.
+
+---
+
+## Default Development Ports
+
+| Service | Port |
+| ------- | ---- |
+| Django Backend | 8000 |
+| React Frontend | 5173 |
+| PostgreSQL | 5432 |
+
+---
+
+## ⚠️ Troubleshooting
+
+### Database connection error
+Ensure PostgreSQL is installed and running before executing migrations.
+
+### No foods displayed
+Import the Nepali food dataset using:
+```bash
+python manage.py shell
+```
+
+```python
+from foods.import_foods import import_foods
+
+import_foods(
+    "Nepali_Food_Data.csv.csv",
+    replace_existing=True
+)
+```
+
+### Frontend cannot connect to backend
+Make sure:
+- Django is running on port 8000.
+- React is running on port 5173.
+- Both servers are running simultaneously.
+
+---
+
+## Author
+
+Paban Bhandari
+
+Bachelor of Information Technology (BIT)
+
+Final Year Project
+
+---
+
+## 📄 License
+
+This project was developed solely for academic purposes as a Final Year Project.
+
+---
 <div align="center">
-  <p>Built for the Final Year Project</p>
+  <p>Developed as a Final Year Project</p>
+  <p>Bachelor of Information Technology (BIT)</p>
+  <p>2026</p>
 </div>
